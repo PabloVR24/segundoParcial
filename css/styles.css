@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo&family=Bebas+Neue&family=Mulish:wght@200&family=Roboto+Condensed:wght@700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/circular-std');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.error {
+    color: red;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000164;
+}
+
+.container {
+    width: 80%;
+    padding: 20px;
+}
+
+.container h2 {
+    color: white;
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Bebas Neue';
+}
+
+.container form {
+    border-radius: 30px;
+    background-color: #003364;
+    padding: 5%;
+}
+
+.wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 30px;
+    gap: 30px;
+}
+
+.wrapper .box {
+    width: 100%;
+    position: relative;
+    padding: 20px;
+    text-align-last: center;
+}
+
+.wrapper .box input {
+    font-family: 'Mulish', sans-serif;
+    width: 100%;
+    font-size: 20px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid aquamarine;
+    color: white;
+    padding-top: 10px;
+}
+
+.wrapper .box label {
+    font-family: 'Arimo', sans-serif;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.wrapper .box select {
+    font-family: 'Mulish', sans-serif;
+    width: 70%;
+    font-size: 20px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid aquamarine;
+    color: white;
+    padding-top: 10px;
+}
+
+.opt {
+    color: black;
+    background-color: aqua;
+}
+
+#btnSubmit {
+    color: black;
+    background-color: aqua;
+    width: 300px;
+    height: 70px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-family: 'Mulish', sans-serif;
+    text-align: center;
+    justify-content: center;
+    border: 0;
+    color: black;
+}
+
+#btnSubmit:hover {
+    color: white;
+    background-color: #0051a2;
+}
+
+.error {
+    color: red;
+    font-family: 'Circular Std', sans-serif;
+}
+
+@media screen and (max-width:660px) {
+    .wrapper .box label {
+        font-size: 13px;
+    }
+    .container {
+        padding: 10px;
+    }
+    p {
+        font-size: 80%;
+    }
+    h1 {
+        text-align: center;
+        font-size: 50ch;
+    }
+    .wrapper .box select {
+        width: 100%;
+        padding-top: 20px;
+    }
+    #btnSubmit {
+        width: 100%;
+        height: 100%;
+    }
+}

@@ -1,0 +1,35 @@
+@import url('https://fonts.cdnfonts.com/css/circular-std');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Circular Std', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #441b1b;
+}
+
+.h4 {
+    color: white;
+    font-size: 20px;
+}
+
+.message {
+    margin-bottom: 5vh;
+}
+
+.card {
+    padding: 10%;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: blueviolet;
+    border: solid 1px black;
+    border-radius: 50px;
+}
