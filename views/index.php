@@ -25,6 +25,10 @@ include('../class/class_municipio/class_municipio_dal.php');
 include('../class/class_nivel/class_nivel_dal.php');
 ?>
 
+<script>
+    const formulario = document.getElementById("forms");
+const btnSubmit = document.getElementById("btnSubmit");
+</script>
 <body>
     <div class="container">
         <h2>Ticket de Turno</h2>
