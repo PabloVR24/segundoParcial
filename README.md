@@ -1,3 +1,6 @@
+# Recursos
+- El script de las tablas de MySQL se encuentra en el repositorio, solo es copiar y pegarlo en el workplace de MySQL (phpMyAdmin / MySQLWorkbench)
+
 # COSAS QUE SE DEBEN HACER
 
 - Login de Acceso (Usuario y Contraseña) con CAPTCHA **PABLO**
