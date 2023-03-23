@@ -4,14 +4,23 @@
 <?php
 
 require_once('..\class\class_ticket\class_ticket_dal.php');
+require_once('../class/class_alumno/class_alumno_dal.php');
 
 // Recuperar los datos y el mensaje de éxito de la URL
 $exito = $_GET['exito'] ?? false;
 $create_id = $_GET['create_id'] ?? '';
+$lcurp = $_GET['lcurp'] ?? '';
 $message = "";
+
+echo $exito . '<br>';
+echo $create_id . '<br>';
+echo $lcurp . '<br>';
 
 $obj_ticket = new catalogo_ticket_dal;
 $resultado = $obj_ticket->datos_por_id($create_id);
+
+$obj_alumno = new catalogo_alumno_dal;
+$res_alumno = $obj_alumno->datos_por_id($lcurp);
 
 // Mostrar el mensaje de éxito y los datos de confirmación si existen
 if ($exito) {
@@ -36,9 +45,9 @@ if ($exito) {
         <?php
         print ("<p class = 'h4'> ESTATUS: " . $resultado->getESTATUS()) . "</p>";
         print ("Fecha: " . $resultado->getFECHA()) . "<br>";
-        print("Nombre Completo: " . $resultado->getNOMBRE() . " " . $resultado->getAPELLIDO_PAT() . " " . $resultado->getAPELLIDO_MAT());
+        print("Nombre Completo: " . $res_alumno->getNOMBRE() . " " . $res_alumno->getAPELLIDO_PAT() . " " . $res_alumno->getAPELLIDO_MAT());
         print("<br><br><br>");
-        print("Registrado por " . $resultado->getNOMBRE_REALIZA())
+        print("Registrado por " . $resultado->getNOMBRE_USUARIO())
         ?>
     </div>
 </div>

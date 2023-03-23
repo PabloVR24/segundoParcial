@@ -1,6 +1,6 @@
 <?php
 include('class_alumno.php');
-include('../class_db/class_db.php');
+include('class_db.php');
 
 class catalogo_alumno_dal extends class_db
 {

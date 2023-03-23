@@ -1,6 +1,6 @@
 <?php
 include('class_ticket.php');
-include('../class_db/class_db.php');
+include('class_db.php');
 
 class catalogo_ticket_dal extends class_db
 {

@@ -27,78 +27,27 @@ include('../class/class_nivel/class_nivel_dal.php');
 
 <script>
     const formulario = document.getElementById("forms");
-const btnSubmit = document.getElementById("btnSubmit");
+    const btnSubmit = document.getElementById("btnSubmit");
 </script>
+
 <body>
     <div class="container">
         <h2>Ticket de Turno</h2>
         <form id="forms" method="post" action="">
             <div class="wrapper">
                 <div class="box">
-                    <input type="text" name="fname" id="fname" value="<?php echo isset($_POST["fname"]) ? $_POST["fname"] : ""; ?>" />
+                    <input type="text" name="fname" id="fname" value="<?php echo isset($_POST[" fname "]) ? $_POST["fname "] : " "; ?>" />
                     <label for="fname">Nombre completo de quien realizará el trámite:</label>
                     <?php if (!empty($error_fname)) { ?>
                         <span class="error"><?php echo $error_fname; ?></span>
                     <?php } ?>
                 </div>
                 <div class="box">
-                    <input type="text" name="lCurp" id="lCurp" value="<?php echo isset($_POST["lCurp"]) ? $_POST["lCurp"] : ""; ?>" />
+                    <input type="text" name="lCurp" id="lCurp" value="<?php echo isset($_POST[" lCurp "]) ? $_POST["lCurp "] : " "; ?>" />
                     <label for="lCurp">CURP:</label>
                     <?php if (!empty($error_lcurp)) { ?>
                         <span class="error"><?php echo $error_lcurp; ?></span>
                     <?php } ?>
-                </div>
-            </div>
-
-            <div class="wrapper">
-                <div class="box">
-                    <input type="text" name="name" id="name" value="<?php echo isset($_POST["name"]) ? $_POST["name"] : ""; ?>" />
-                    <label for="name">Nombre</label>
-                    <?php if (!empty($error_name)) { ?>
-                        <span class="error"><?php echo $error_name; ?></span>
-                    <?php } ?>
-
-                </div>
-                <div class="box">
-                    <input type="text" name="firstName" id="firstName" value="<?php echo isset($_POST["firstName"]) ? $_POST["firstName"] : ""; ?>" />
-                    <label for="firstName">Ap. Paterno</label>
-                    <?php if (!empty($error_firstName)) { ?>
-                        <span class="error"><?php echo $error_firstName; ?></span>
-                    <?php } ?>
-                </div>
-                <div class="box">
-                    <input type="text" name="lastName" id="lastName" value="<?php echo isset($_POST["lastName"]) ? $_POST["lastName"] : ""; ?>" />
-                    <label for="lastName">Ap. Materno</label>
-                    <?php if (!empty($error_lastName)) { ?>
-                        <span class="error"><?php echo $error_lastName; ?></span>
-                    <?php } ?>
-                </div>
-            </div>
-
-            <div class="wrapper">
-                <div class="box">
-                    <input type="tel" name="tel" id="tel" value="<?php echo isset($_POST["tel"]) ? $_POST["tel"] : ""; ?>" />
-                    <label for="tel">Telefono:</label>
-                    <?php if (!empty($error_tel)) { ?>
-                        <span class="error"><?php echo $error_tel; ?></span>
-                    <?php } ?>
-
-                </div>
-                <div class="box">
-                    <input type="tel" name="cel" id="cel" value="<?php echo isset($_POST["cel"]) ? $_POST["cel"] : ""; ?>" />
-                    <label for="cel">Celular:</label>
-                    <?php if (!empty($error_cel)) { ?>
-                        <span class="error"><?php echo $error_cel; ?></span>
-                    <?php } ?>
-
-                </div>
-                <div class="box">
-                    <input type="email" name="mail" id="mail" value="<?php echo isset($_POST["mail"]) ? $_POST["mail"] : ""; ?>" />
-                    <label for="mail">e-mail</label>
-                    <?php if (!empty($error_mail)) { ?>
-                        <span class="error"><?php echo $error_mail; ?></span>
-                    <?php } ?>
-
                 </div>
             </div>
 
@@ -112,7 +61,7 @@ const btnSubmit = document.getElementById("btnSubmit");
                         echo '<h2> No se encontraron Niveles </h2>';
                     } else {
                     ?>
-                        <select name="mes" id="mes" value="<?php echo isset($_POST["mes"]) ? $_POST["mes"] : ""; ?>">
+                        <select name="mes" id="mes" value="<?php echo isset($_POST[" mes "]) ? $_POST["mes "] : " "; ?>">
                             <option class="opt" hidden></option>
                             <?php
                             foreach ($result_nivel as $key => $value) {
@@ -142,7 +91,7 @@ const btnSubmit = document.getElementById("btnSubmit");
                         echo '<h2> No se encontraron Asuntos </h2>';
                     } else {
                     ?>
-                        <select name="mes1" id="mes1" value="<?php echo isset($_POST["mes1"]) ? $_POST["mes1"] : ""; ?>">
+                        <select name="mes1" id="mes1" value="<?php echo isset($_POST[" mes1 "]) ? $_POST["mes1 "] : " "; ?>">
                             <option class="opt" hidden></option>
                             <?php
                             foreach ($result_asuntos as $key => $value) {
@@ -175,7 +124,7 @@ const btnSubmit = document.getElementById("btnSubmit");
                         echo '<h2> No se encontraron Municipios </h2>';
                     } else {
                     ?>
-                        <select name="mes2" id="mes2" value="<?php echo isset($_POST["mes2"]) ? $_POST["mes2"] : ""; ?>">
+                        <select name="mes2" id="mes2" value="<?php echo isset($_POST[" mes2 "]) ? $_POST["mes2 "] : " "; ?>">
                             <option class="opt" hidden></option>
                             <?php
                             foreach ($result_municipio as $key => $value) {
@@ -198,7 +147,7 @@ const btnSubmit = document.getElementById("btnSubmit");
                 </div>
 
                 <div class="box">
-                    <input type="date" id="fecha" name="fecha" value="<?php echo isset($_POST["fecha"]) ? $_POST["fecha"] : ""; ?>" min="2023-01-01" max="2023-12-31">
+                    <input type="date" id="fecha" name="fecha" value="<?php echo isset($_POST[" fecha "]) ? $_POST["fecha "] : " "; ?>" min="2023-01-01" max="2023-12-31">
                     <label for="fecha">Fecha de Cita:
                     </label>
                     <br>
