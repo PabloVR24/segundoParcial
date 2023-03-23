@@ -1,8 +1,8 @@
 <?php
-include('class_ticket.php');
+include('class_usuario.php');
 include('../class_db/class_db.php');
 
-class catalogo_ticket_dal extends class_db
+class catalogo_usuario_dal extends class_db
 {
     function __construct()
     {
@@ -18,52 +18,42 @@ class catalogo_ticket_dal extends class_db
     function datos_por_id($id)
     {
         $id = $this->db_conn->real_escape_string($id);
-        $sql = "SELECT * FROM Ticket WHERE ID_TICKET = '$id'";
+        $sql = "SELECT * FROM USUARIOS WHERE NOMBRE_USUARIO = '$id'";
         $this->set_sql($sql);
         $result = mysqli_query($this->db_conn, $this->db_query)
             or die(mysqli_error($this->db_conn));
 
-        $total_tickets = mysqli_num_rows($result);
+        $total_usuarios = mysqli_num_rows($result);
         $obj_det = null;
 
-        if ($total_tickets == 1) {
+        if ($total_usuarios == 1) {
             $renglon = mysqli_fetch_assoc($result);
-            $obj_det = new catalogo_ticket(
-                $renglon["ID_TICKET"],
+            $obj_det = new catalogo_usuario(
                 $renglon["NOMBRE_USUARIO"],
-                $renglon["CURP"],
-                $renglon["FECHA"],
-                $renglon["ID_ASUNTO"],
-                $renglon["ID_NIVEL"],
-                $renglon["ID_MUNICIPIO"],
-                $renglon["ESTATUS"],
+                $renglon["NOMBRE"],
+                $renglon["CONTRASEÑA"],
             );
         }
         return $obj_det;
     }
 
-    function obtener_lista_tickets()
+    function obtener_lista_usuarios()
     {
-        $sql = "SELECT * FROM ticket";
+        $sql = "SELECT * FROM usuarios";
         $this->set_sql(($sql));
         $rs = mysqli_query($this->db_conn, $this->db_query)
             or die(mysqli_error($this->db_conn));
 
-        $total_tickets = mysqli_num_rows($rs);
+        $total_usuarios = mysqli_num_rows($rs);
         $obj_det = null;
 
-        if ($total_tickets > 0) {
+        if ($total_usuarios > 0) {
             $i = 0;
             while ($renglon = mysqli_fetch_assoc($rs)) {
-                $obj_det = new catalogo_ticket(
-                    $renglon["ID_TICKET"],
+                $obj_det = new catalogo_usuario(
                     $renglon["NOMBRE_USUARIO"],
-                    $renglon["CURP"],
-                    $renglon["FECHA"],
-                    $renglon["ID_ASUNTO"],
-                    $renglon["ID_NIVEL"],
-                    $renglon["ID_MUNICIPIO"],
-                    $renglon["ESTATUS"],
+                    $renglon["NOMBRE"],
+                    $renglon["CONTRASEÑA"],
                 );
 
                 $i++;
@@ -73,18 +63,13 @@ class catalogo_ticket_dal extends class_db
             return $lista;
         }
     }
-    function inserta_ticket($obj)
+    function inserta_usuario($obj)
     {
-        $sql = "INSERT INTO ticket (ID_TICKET, NOMBRE_USUARIO, CURP, FECHA, ID_ASUNTO, ID_NIVEL, ID_MUNICIPIO, ESTATUS)";
+        $sql = "INSERT INTO USUARIOS (NOMBRE_USUARIO, NOMBRE, CONTRASEÑA)";
         $sql .= " VALUES (";
-        $sql .= "'" . $obj->getID_TICKET() . "',";
         $sql .= "'" . $obj->getNOMBRE_USUARIO() . "',";
-        $sql .= "'" . $obj->getCURP() . "',";
-        $sql .= "'" . $obj->getFECHA() . "',";
-        $sql .= "'" . $obj->getID_ASUNTO() . "',";
-        $sql .= "'" . $obj->getID_NIVEL() . "',";
-        $sql .= "'" . $obj->getID_MUNICIPIO() . "',";
-        $sql .= "'" . $obj->getESTATUS() . "'";
+        $sql .= "'" . $obj->getNOMBRE() . "',";
+        $sql .= "'" . $obj->getCONTRASEÑA() . "'";
         $sql .= ")";
 
         $this->set_sql($sql);
@@ -101,11 +86,11 @@ class catalogo_ticket_dal extends class_db
         return $insertado;
     }
 
-    function actualizar_ticket($obj)
+    function actualizar_ASUNTO($obj)
     {
-        $sql = "UPDATE Ticket SET ";
-        $sql .= "NOMBRE_USUARIO=" . "'" . $obj->getNOMBRE_USUARIO() . "'";
-        $sql .= "WHERE id_ticket= '" . $obj->getID_TICKET() . "'";
+        $sql = "UPDATE USUARIOS SET ";
+        $sql .= "NOMBRE =" . "'" . $obj->getNOMBRE() . "'";
+        $sql .= "WHERE NOMBRE_USUARIO= '" . $obj->getNOMBRE_USUARIO() . "'";
 
         $this->set_sql($sql);
         $this->db_conn->set_charset('utf8');
@@ -121,10 +106,10 @@ class catalogo_ticket_dal extends class_db
         return $actualizado;
     }
 
-    function borrar_ticket($id)
+    function borrar_usuario($id)
     {
         $id = $this->db_conn->real_escape_string($id);
-        $sql = "DELETE FROM Ticket WHERE ID_TICKET = '$id'";
+        $sql = "DELETE FROM USUARIOS WHERE NOMBRE_USUARIO = '$id'";
 
         $this->set_sql($sql);
         $this->db_conn->set_charset('utf8');
@@ -139,10 +124,10 @@ class catalogo_ticket_dal extends class_db
         return $borrado;
     }
 
-    function existe_ticket($id)
+    function existe_usuario($id)
     {
         $id = $this->db_conn->real_escape_string($id);
-        $sql = "SELECT COUNT(*) from TICKET where ID_TICKET='$id'";
+        $sql = "SELECT COUNT(*) from TICKET where NOMBRE_USUARIO ='$id'";
         $this->set_sql($sql);
         $rs = mysqli_query($this->db_conn, $this->db_query)
             or die(mysqli_error($this->db_conn));

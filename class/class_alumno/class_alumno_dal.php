@@ -1,8 +1,8 @@
 <?php
-include('class_ticket.php');
+include('class_alumno.php');
 include('../class_db/class_db.php');
 
-class catalogo_ticket_dal extends class_db
+class catalogo_alumno_dal extends class_db
 {
     function __construct()
     {
@@ -18,52 +18,50 @@ class catalogo_ticket_dal extends class_db
     function datos_por_id($id)
     {
         $id = $this->db_conn->real_escape_string($id);
-        $sql = "SELECT * FROM Ticket WHERE ID_TICKET = '$id'";
+        $sql = "SELECT * FROM ALUMNO WHERE CURP = '$id'";
         $this->set_sql($sql);
         $result = mysqli_query($this->db_conn, $this->db_query)
             or die(mysqli_error($this->db_conn));
 
-        $total_tickets = mysqli_num_rows($result);
+        $total_alumnos = mysqli_num_rows($result);
         $obj_det = null;
 
-        if ($total_tickets == 1) {
+        if ($total_alumnos == 1) {
             $renglon = mysqli_fetch_assoc($result);
-            $obj_det = new catalogo_ticket(
-                $renglon["ID_TICKET"],
-                $renglon["NOMBRE_USUARIO"],
+            $obj_det = new catalogo_alumno(
                 $renglon["CURP"],
-                $renglon["FECHA"],
-                $renglon["ID_ASUNTO"],
-                $renglon["ID_NIVEL"],
-                $renglon["ID_MUNICIPIO"],
-                $renglon["ESTATUS"],
+                $renglon["NOMBRE"],
+                $renglon["APELLIDO_PAT"],
+                $renglon["APELLIDO_MAT"],
+                $renglon["TELEFONO"],
+                $renglon["CELULAR"],
+                $renglon["EMAIL"],
             );
         }
         return $obj_det;
     }
 
-    function obtener_lista_tickets()
+    function obtener_lista_alumno()
     {
-        $sql = "SELECT * FROM ticket";
+        $sql = "SELECT * FROM alumno";
         $this->set_sql(($sql));
         $rs = mysqli_query($this->db_conn, $this->db_query)
             or die(mysqli_error($this->db_conn));
 
-        $total_tickets = mysqli_num_rows($rs);
+        $total_alumnos = mysqli_num_rows($rs);
         $obj_det = null;
 
-        if ($total_tickets > 0) {
+        if ($total_alumnos > 0) {
             $i = 0;
             while ($renglon = mysqli_fetch_assoc($rs)) {
-                $obj_det = new catalogo_ticket(
-                    $renglon["ID_TICKET"],
-                    $renglon["NOMBRE_USUARIO"],
+                $obj_det = new catalogo_alumno(
                     $renglon["CURP"],
-                    $renglon["FECHA"],
-                    $renglon["ID_ASUNTO"],
-                    $renglon["ID_NIVEL"],
-                    $renglon["ID_MUNICIPIO"],
-                    $renglon["ESTATUS"],
+                    $renglon["NOMBRE"],
+                    $renglon["APELLIDO_PAT"],
+                    $renglon["APELLIDO_MAT"],
+                    $renglon["TELEFONO"],
+                    $renglon["CELULAR"],
+                    $renglon["EMAIL"],
                 );
 
                 $i++;
@@ -73,18 +71,17 @@ class catalogo_ticket_dal extends class_db
             return $lista;
         }
     }
-    function inserta_ticket($obj)
+    function inserta_alumno($obj)
     {
-        $sql = "INSERT INTO ticket (ID_TICKET, NOMBRE_USUARIO, CURP, FECHA, ID_ASUNTO, ID_NIVEL, ID_MUNICIPIO, ESTATUS)";
+        $sql = "INSERT INTO alumno (CURP, NOMBRE, APELLIDO_PAT, APELLIDO_MAT, TELEFONO, CELULAR, EMAIL)";
         $sql .= " VALUES (";
-        $sql .= "'" . $obj->getID_TICKET() . "',";
-        $sql .= "'" . $obj->getNOMBRE_USUARIO() . "',";
         $sql .= "'" . $obj->getCURP() . "',";
-        $sql .= "'" . $obj->getFECHA() . "',";
-        $sql .= "'" . $obj->getID_ASUNTO() . "',";
-        $sql .= "'" . $obj->getID_NIVEL() . "',";
-        $sql .= "'" . $obj->getID_MUNICIPIO() . "',";
-        $sql .= "'" . $obj->getESTATUS() . "'";
+        $sql .= "'" . $obj->getNOMBRE() . "',";
+        $sql .= "'" . $obj->getAPELLIDO_PAT() . "',";
+        $sql .= "'" . $obj->getAPELLIDO_MAT() . "',";
+        $sql .= "'" . $obj->getTELEFONO() . "',";
+        $sql .= "'" . $obj->getCELULAR() . "',";
+        $sql .= "'" . $obj->getEMAIL() . "'";
         $sql .= ")";
 
         $this->set_sql($sql);
@@ -101,11 +98,11 @@ class catalogo_ticket_dal extends class_db
         return $insertado;
     }
 
-    function actualizar_ticket($obj)
+    function actualizar_alumno($obj)
     {
-        $sql = "UPDATE Ticket SET ";
-        $sql .= "NOMBRE_USUARIO=" . "'" . $obj->getNOMBRE_USUARIO() . "'";
-        $sql .= "WHERE id_ticket= '" . $obj->getID_TICKET() . "'";
+        $sql = "UPDATE alumno SET ";
+        $sql .= "NOMBRE=" . "'" . $obj->getNOMBRE() . "'";
+        $sql .= "WHERE CURP= '" . $obj->getCURP() . "'";
 
         $this->set_sql($sql);
         $this->db_conn->set_charset('utf8');
@@ -121,10 +118,10 @@ class catalogo_ticket_dal extends class_db
         return $actualizado;
     }
 
-    function borrar_ticket($id)
+    function borrar_alumno($id)
     {
         $id = $this->db_conn->real_escape_string($id);
-        $sql = "DELETE FROM Ticket WHERE ID_TICKET = '$id'";
+        $sql = "DELETE FROM alumno WHERE CURP = '$id'";
 
         $this->set_sql($sql);
         $this->db_conn->set_charset('utf8');
@@ -139,10 +136,10 @@ class catalogo_ticket_dal extends class_db
         return $borrado;
     }
 
-    function existe_ticket($id)
+    function existe_alumno($id)
     {
         $id = $this->db_conn->real_escape_string($id);
-        $sql = "SELECT COUNT(*) from TICKET where ID_TICKET='$id'";
+        $sql = "SELECT COUNT(*) from ALUMNO where CURP='$id'";
         $this->set_sql($sql);
         $rs = mysqli_query($this->db_conn, $this->db_query)
             or die(mysqli_error($this->db_conn));

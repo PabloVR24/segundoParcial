@@ -3,37 +3,25 @@ if (class_exists("catalogo_ticket") != true) {
     class catalogo_ticket
     {
         protected $ID_TICKET;
-        protected $NOMBRE_REALIZA;
+        protected $NOMBRE_USUARIO;
         protected $CURP;
         protected $NOMBRE;
-        protected $APELLIDO_PAT;
-        protected $APELLIDO_MAT;
-        protected $TELEFONO;
-        protected $CELULAR;
-        protected $EMAIL;
         protected $FECHA;
         protected $ID_ASUNTO;
         protected $ID_NIVEL;
         protected $ID_MUNICIPIO;
         protected $ESTATUS;
 
-        public function __construct($id_ticket = null, $nombre_realiza = null, $curp = null, $nombre = null,  $apellido_pat = null, $apellido_mat = null, $telefono = null, $celular = null, $email = null, $fecha = null, $id_asunto = null, $id_nivel = null, $id_municipio = null, $estatus = null)
+        public function __construct($id_ticket = null, $nombre_usuario = null, $curp = null, $fecha = null, $id_asunto = null, $id_nivel = null, $id_municipio = null, $estatus = null)
         {
             $this->ID_TICKET = $id_ticket;
-            $this->NOMBRE_REALIZA = $nombre_realiza;
+            $this->NOMBRE_USUARIO = $nombre_usuario;
             $this->CURP = $curp;
-            $this->NOMBRE = $nombre;
-            $this->APELLIDO_PAT = $apellido_pat;
-            $this->APELLIDO_MAT = $apellido_mat;
-            $this->TELEFONO = $telefono;
-            $this->CELULAR = $celular;
-            $this->EMAIL = $email;
             $this->FECHA = $fecha;
             $this->ID_ASUNTO = $id_asunto;
             $this->ID_NIVEL = $id_nivel;
             $this->ID_MUNICIPIO = $id_municipio;
             $this->ESTATUS = $estatus;
-            
         }
 
         public function getID_TICKET()
@@ -46,14 +34,14 @@ if (class_exists("catalogo_ticket") != true) {
             $this->ID_TICKET = $ID_TICKET;
         }
 
-        public function getNOMBRE_REALIZA()
+        public function getNOMBRE_USUARIO()
         {
-            return $this->NOMBRE_REALIZA;
+            return $this->NOMBRE_USUARIO;
         }
 
-        public function setNOMBRE_REALIZA($NOMBRE_REALIZA)
+        public function setNOMBRE_USUARIO($NOMBRE_USUARIO)
         {
-            $this->NOMBRE_REALIZA = $NOMBRE_REALIZA;
+            $this->NOMBRE_USUARIO = $NOMBRE_USUARIO;
         }
 
         public function getCURP()
@@ -76,55 +64,7 @@ if (class_exists("catalogo_ticket") != true) {
             $this->NOMBRE = $NOMBRE;
         }
 
-        public function getAPELLIDO_PAT()
-        {
-            return $this->APELLIDO_PAT;
-        }
 
-        public function setAPELLIDO_PAT($APELLIDO_PAT)
-        {
-            $this->APELLIDO_PAT = $APELLIDO_PAT;
-        }
-
-        public function getAPELLIDO_MAT()
-        {
-            return $this->APELLIDO_MAT;
-        }
-
-        public function setAPELLIDO_MAT($APELLIDO_MAT)
-        {
-            $this->APELLIDO_MAT = $APELLIDO_MAT;
-        }
-
-        public function getTELEFONO()
-        {
-            return $this->TELEFONO;
-        }
-
-        public function setTELEFONO($TELEFONO)
-        {
-            $this->TELEFONO = $TELEFONO;
-        }
-
-        public function getCELULAR()
-        {
-            return $this->CELULAR;
-        }
-
-        public function setCELULAR($CELULAR)
-        {
-            $this->CELULAR = $CELULAR;
-        }
-
-        public function getEMAIL()
-        {
-            return $this->EMAIL;
-        }
-
-        public function setEMAIL($EMAIL)
-        {
-            $this->EMAIL = $EMAIL;
-        }
 
         public function getID_ASUNTO()
         {
@@ -146,27 +86,33 @@ if (class_exists("catalogo_ticket") != true) {
             $this->ID_NIVEL = $ID_NIVEL;
         }
 
-        public function getESTATUS(){
+        public function getESTATUS()
+        {
             return $this->ESTATUS;
         }
-    
-        public function setESTATUS($ESTATUS){
+
+        public function setESTATUS($ESTATUS)
+        {
             $this->ESTATUS = $ESTATUS;
         }
-    
-        public function getID_MUNICIPIO(){
+
+        public function getID_MUNICIPIO()
+        {
             return $this->ID_MUNICIPIO;
         }
-    
-        public function setID_MUNICIPIO($ID_MUNICIPIO){
+
+        public function setID_MUNICIPIO($ID_MUNICIPIO)
+        {
             $this->ID_MUNICIPIO = $ID_MUNICIPIO;
         }
-    
-        public function getFECHA(){
+
+        public function getFECHA()
+        {
             return $this->FECHA;
         }
-    
-        public function setFECHA($FECHA){
+
+        public function setFECHA($FECHA)
+        {
             $this->FECHA = $FECHA;
         }
     }
