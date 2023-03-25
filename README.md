@@ -1,10 +1,14 @@
 # Recursos
 - El script de las tablas de MySQL se encuentra en el repositorio, solo es copiar y pegarlo en el workplace de MySQL (phpMyAdmin / MySQLWorkbench)
 
+# Estructura de la base de datos  
+![Estrcutura base de datos](/src/images/estructurabd.png)
+
+
 # COSAS QUE SE DEBEN HACER
 
 - Login de Acceso (Usuario y Contraseña) con CAPTCHA **PABLO**
-- El formulario de solicitud de ticket de turno (público) deberá tener la capacidad de registrar y/o modificar el registro en la parte pública por parte de los usuarios, para modificar solicite el CURP y el número de turno que se le asignó. En cada solicitud generé un comprobante de datos básicos con el turno correspondiente de la solicitud registrada, que sea en PDF con formato aceptable. El turno asignado deberá iniciar en 1 por cada municipio, cada municipio llevará su control interno de atención de 1 hasta n. **PABLO AYUDA**
+- El formulario de solicitud de ticket de turno (público) deberá tener la capacidad de registrar y/o modificar el registro en la parte pública por parte de los usuarios, para modificar solicite el CURP y el número de turno que se le asignó. En cada solicitud generé un comprobante de datos básicos con el turno correspondiente de la solicitud registrada, que sea en PDF con formato aceptable. El turno asignado deberá iniciar en 1 por cada municipio, cada municipio llevará su control interno de atención de 1 hasta n. **PABLO**
 
 - Es muy importante que el comprobante pdf del usuario lleve un código QR, donde se identifique la CURP del alumno solicitante.
 
