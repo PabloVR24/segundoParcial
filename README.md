@@ -4,6 +4,9 @@
 # Estructura de la base de datos  
 ![Estrcutura base de datos](/src/images/estructurabd.png)
 
+# Estructura del proyecto 
+No se rian ogts
+![Estrcutura del proyecto](/src/images/MAL%20HECHO.png)
 
 # COSAS QUE SE DEBEN HACER
 
