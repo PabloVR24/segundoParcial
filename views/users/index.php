@@ -18,11 +18,11 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css
 </head>
 
 <?php
-include('../class/server_validation.php');
-include('../class/class_ticket/class_ticket_dal.php');
-include('../class/class_asunto/class_asunto_dal.php');
-include('../class/class_municipio/class_municipio_dal.php');
-include('../class/class_nivel/class_nivel_dal.php');
+include('../../class/server_validation.php');
+include('../../class/class_ticket/class_ticket_dal.php');
+include('../../class/class_asunto/class_asunto_dal.php');
+include('../../class/class_municipio/class_municipio_dal.php');
+include('../../class/class_nivel/class_nivel_dal.php');
 ?>
 
 <script>
@@ -36,14 +36,14 @@ include('../class/class_nivel/class_nivel_dal.php');
         <form id="forms" method="post" action="">
             <div class="wrapper">
                 <div class="box">
-                    <input type="text" name="fname" id="fname" value="<?php echo isset($_POST[" fname "]) ? $_POST["fname "] : " "; ?>" />
+                    <input type="text" name="fname" id="fname" value="<?php echo isset($_POST["fname"]) ? $_POST["fname"] : ""; ?>" />
                     <label for="fname">Nombre completo de quien realizará el trámite:</label>
                     <?php if (!empty($error_fname)) { ?>
                         <span class="error"><?php echo $error_fname; ?></span>
                     <?php } ?>
                 </div>
                 <div class="box">
-                    <input type="text" name="lCurp" id="lCurp" value="<?php echo isset($_POST[" lCurp "]) ? $_POST["lCurp "] : " "; ?>" />
+                    <input type="text" name="lCurp" id="lCurp" value="<?php echo isset($_POST["lCurp"]) ? $_POST["lCurp"] : ""; ?>" />
                     <label for="lCurp">CURP:</label>
                     <?php if (!empty($error_lcurp)) { ?>
                         <span class="error"><?php echo $error_lcurp; ?></span>
@@ -61,7 +61,7 @@ include('../class/class_nivel/class_nivel_dal.php');
                         echo '<h2> No se encontraron Niveles </h2>';
                     } else {
                     ?>
-                        <select name="mes" id="mes" value="<?php echo isset($_POST[" mes "]) ? $_POST["mes "] : " "; ?>">
+                        <select name="mes" id="mes" value="<?php echo isset($_POST["mes"]) ? $_POST["mes"] : ""; ?>">
                             <option class="opt" hidden></option>
                             <?php
                             foreach ($result_nivel as $key => $value) {
@@ -91,7 +91,7 @@ include('../class/class_nivel/class_nivel_dal.php');
                         echo '<h2> No se encontraron Asuntos </h2>';
                     } else {
                     ?>
-                        <select name="mes1" id="mes1" value="<?php echo isset($_POST[" mes1 "]) ? $_POST["mes1 "] : " "; ?>">
+                        <select name="mes1" id="mes1" value="<?php echo isset($_POST["mes1"]) ? $_POST["mes1"] : ""; ?>">
                             <option class="opt" hidden></option>
                             <?php
                             foreach ($result_asuntos as $key => $value) {
@@ -124,7 +124,7 @@ include('../class/class_nivel/class_nivel_dal.php');
                         echo '<h2> No se encontraron Municipios </h2>';
                     } else {
                     ?>
-                        <select name="mes2" id="mes2" value="<?php echo isset($_POST[" mes2 "]) ? $_POST["mes2 "] : " "; ?>">
+                        <select name="mes2" id="mes2" value="<?php echo isset($_POST["mes2"]) ? $_POST["mes2"] : ""; ?>">
                             <option class="opt" hidden></option>
                             <?php
                             foreach ($result_municipio as $key => $value) {
@@ -147,7 +147,7 @@ include('../class/class_nivel/class_nivel_dal.php');
                 </div>
 
                 <div class="box">
-                    <input type="date" id="fecha" name="fecha" value="<?php echo isset($_POST[" fecha "]) ? $_POST["fecha "] : " "; ?>" min="2023-01-01" max="2023-12-31">
+                    <input type="date" id="fecha" name="fecha" value="<?php echo isset($_POST["fecha"]) ? $_POST["fecha"] : ""; ?>" min="2023-01-01" max="2023-12-31">
                     <label for="fecha">Fecha de Cita:
                     </label>
                     <br>

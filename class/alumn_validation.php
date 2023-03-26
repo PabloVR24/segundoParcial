@@ -1,5 +1,5 @@
 <?php
-include('../class/class_alumno/class_alumno_dal.php');
+include (__DIR__ . "../../class/class_alumno/class_alumno_dal.php");
 $lcurp = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lcurp = test_input($_POST["lCurp"]);
@@ -46,10 +46,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error_mail = "El email es invalido";
     }
 
-    if (empty($error_lcurp) && empty($error_name) && empty($error_firstName) && empty($error_lastName) && empty($error_tel) && empty($error_cel) && empty($error_mail)) {
+    if (empty($lcurp)) {
+        $error_lcurp = "El CURP es obligatorio";
+    } elseif (!preg_match("/^[a-zA-Z]{4}(\d{6})([a-zA-Z]{6})(([a-zA-Z0-9]){2})?$/", $lcurp)) {
+        $error_lcurp = "El formato del CURP no es válido";
+    }
 
+    if (empty($error_lcurp) && empty($error_name) && empty($error_firstName) && empty($error_lastName) && empty($error_tel) && empty($error_cel) && empty($error_mail)) {
         $obj_alumno = new catalogo_alumno_dal;
-        $obj_ins = new catalogo_alumno("$lcurp", "$name", "$firstName", "$lastName", "$tel", "$cel", "$mail");
+        $obj_ins = new catalogo_alumno(strtoupper($lcurp), strtoupper($name), strtoupper($firstName), strtoupper($lastName), $tel, $cel, strtoupper($mail));
         $result_ins = $obj_alumno->inserta_alumno($obj_ins);
         if ($result_ins == 1) {
             header("Location: index.php");

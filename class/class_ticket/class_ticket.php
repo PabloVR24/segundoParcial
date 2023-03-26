@@ -11,8 +11,9 @@ if (class_exists("catalogo_ticket") != true) {
         protected $ID_NIVEL;
         protected $ID_MUNICIPIO;
         protected $ESTATUS;
+        protected $TURNO;
 
-        public function __construct($id_ticket = null, $nombre_usuario = null, $curp = null, $fecha = null, $id_asunto = null, $id_nivel = null, $id_municipio = null, $estatus = null)
+        public function __construct($id_ticket = null, $nombre_usuario = null, $curp = null, $fecha = null, $id_asunto = null, $id_nivel = null, $id_municipio = null, $estatus = null, $turno = null)
         {
             $this->ID_TICKET = $id_ticket;
             $this->NOMBRE_USUARIO = $nombre_usuario;
@@ -22,6 +23,7 @@ if (class_exists("catalogo_ticket") != true) {
             $this->ID_NIVEL = $id_nivel;
             $this->ID_MUNICIPIO = $id_municipio;
             $this->ESTATUS = $estatus;
+            $this->TURNO = $turno;
         }
 
         public function getID_TICKET()
@@ -114,6 +116,16 @@ if (class_exists("catalogo_ticket") != true) {
         public function setFECHA($FECHA)
         {
             $this->FECHA = $FECHA;
+        }
+
+        public function getTURNO()
+        {
+            return $this->TURNO;
+        }
+
+        public function setTurno($TURNO)
+        {
+            $this->TURNO = $TURNO;
         }
     }
 }

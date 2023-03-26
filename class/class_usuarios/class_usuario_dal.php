@@ -1,6 +1,6 @@
 <?php
 include('class_usuario.php');
-include('../class_db/class_db.php');
+include('..\class\class_ticket\class_db.php');
 
 class catalogo_usuario_dal extends class_db
 {
@@ -124,10 +124,11 @@ class catalogo_usuario_dal extends class_db
         return $borrado;
     }
 
-    function existe_usuario($id)
+    function existe_usuario($id, $pass)
     {
         $id = $this->db_conn->real_escape_string($id);
-        $sql = "SELECT COUNT(*) from TICKET where NOMBRE_USUARIO ='$id'";
+        $pass = $this->db_conn->real_escape_string($pass);
+        $sql = "SELECT COUNT(*) from USUARIOS where NOMBRE_USUARIO ='$id' AND BINARY CONTRASEÑA = '$pass'";
         $this->set_sql($sql);
         $rs = mysqli_query($this->db_conn, $this->db_query)
             or die(mysqli_error($this->db_conn));

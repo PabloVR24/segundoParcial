@@ -49,9 +49,5 @@ if ($result_upd == 1) {
 
 //existe curso
 echo '<br>';
-$result_exis = $obj_ticket->existe_ticket("ID_TICKET");
-if ($result_exis == 1) {
-    echo "<h2 style = 'color:green'>CURSO EXISTE</h2>";
-} else {
-    echo "<h2 style = 'color:red'>CURSO NO EXISTE</h2>";
-}
+$result_exis = $obj_ticket->existe_ticket_municipio("3");
+echo $result_exis;

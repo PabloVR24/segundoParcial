@@ -48,4 +48,15 @@ if ($result_upd == 1) {
     echo "<h2 style = 'color:red'>NO SE ACTUALIZO ASUNTO</h2>";
 
 }
+
+//existe curso
+echo '<br>';
+$result_exis = $obj_usuario->existe_usuario("JonasNick", "Jonas");
+if ($result_exis == 1) {
+    echo "<h2 style = 'color:green'>CURSO EXISTE</h2>";
+} else {
+    echo "<h2 style = 'color:red'>CURSO NO EXISTE</h2>";
+}
+
+
 ?>

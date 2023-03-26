@@ -11,8 +11,8 @@
 </head>
 
 <?php
-include('../class/alumn_validation.php');
-require_once('../class/class_alumno/class_alumno_dal.php');
+require_once(__DIR__ . '/../../class/alumn_validation.php');
+require_once(__DIR__ . '/../../class/class_alumno/class_alumno_dal.php');
 $lcurp = $_GET['lcurp'] ?? '';
 echo $lcurp;
 ?>
@@ -20,13 +20,14 @@ echo $lcurp;
 <body>
     <div class="container">
         <h2>Completar Datos</h2>
+        <h5>No se encontraron datos para la CURP: <?php echo strtoupper($lcurp) ?></h5>
         <form id="forms" method="post" action="">
             <div class="wrapper">
                 <div class="box">
 
                     <div class="box">
-                        
-                        <input type='text' name='lCurp' id="lCurp">
+
+                        <input type='text' name='lCurp' id="lCurp" value="<?php echo isset($_POST["lCurp"]) ? $_POST["lCurp"] : "$lcurp"; ?>" />
                         <label for="lCurp">CURP:</label>
                         <?php if (!empty($error_lcurp)) { ?>
                             <span class="error"><?php echo $error_lcurp; ?></span>
@@ -61,7 +62,7 @@ echo $lcurp;
 
                 <div class="wrapper">
                     <div class="box">
-                        <input type="tel" name="tel" id="tel" value="<?php echo isset($_POST[" tel "]) ? $_POST["tel "] : ""; ?>" />
+                        <input type="tel" name="tel" id="tel" value="<?php echo isset($_POST[" tel "]) ? $_POST[" tel "] : ""; ?>" />
                         <label for="tel">Telefono:</label>
                         <?php if (!empty($error_tel)) { ?>
                             <span class="error"><?php echo $error_tel; ?></span>

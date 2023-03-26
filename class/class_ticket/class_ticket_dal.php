@@ -75,7 +75,7 @@ class catalogo_ticket_dal extends class_db
     }
     function inserta_ticket($obj)
     {
-        $sql = "INSERT INTO ticket (ID_TICKET, NOMBRE_USUARIO, CURP, FECHA, ID_ASUNTO, ID_NIVEL, ID_MUNICIPIO, ESTATUS)";
+        $sql = "INSERT INTO ticket (ID_TICKET, NOMBRE_USUARIO, CURP, FECHA, ID_ASUNTO, ID_NIVEL, ID_MUNICIPIO, ESTATUS, TURNO)";
         $sql .= " VALUES (";
         $sql .= "'" . $obj->getID_TICKET() . "',";
         $sql .= "'" . $obj->getNOMBRE_USUARIO() . "',";
@@ -84,7 +84,8 @@ class catalogo_ticket_dal extends class_db
         $sql .= "'" . $obj->getID_ASUNTO() . "',";
         $sql .= "'" . $obj->getID_NIVEL() . "',";
         $sql .= "'" . $obj->getID_MUNICIPIO() . "',";
-        $sql .= "'" . $obj->getESTATUS() . "'";
+        $sql .= "'" . $obj->getESTATUS() . "',";
+        $sql .= "'" . $obj->getTURNO() . "'";
         $sql .= ")";
 
         $this->set_sql($sql);
@@ -143,6 +144,19 @@ class catalogo_ticket_dal extends class_db
     {
         $id = $this->db_conn->real_escape_string($id);
         $sql = "SELECT COUNT(*) from TICKET where ID_TICKET='$id'";
+        $this->set_sql($sql);
+        $rs = mysqli_query($this->db_conn, $this->db_query)
+            or die(mysqli_error($this->db_conn));
+
+        $renglon = mysqli_fetch_array($rs);
+        $cuantos = $renglon[0];
+        return $cuantos;
+    }
+
+    function existe_ticket_municipio($id_municipio)
+    {
+        $id_municipio = $this->db_conn->real_escape_string($id_municipio);
+        $sql = "SELECT COUNT(*) FROM ticket WHERE id_municipio = '$id_municipio'";
         $this->set_sql($sql);
         $rs = mysqli_query($this->db_conn, $this->db_query)
             or die(mysqli_error($this->db_conn));

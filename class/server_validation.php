@@ -43,42 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error_lcurp = "El formato del CURP no es válido";
     }
 
-    // if (empty($name)) {
-    //     $error_name = "El Nombre es obligatorio";
-    // } elseif (!preg_match("/^[a-zA-Z ]{3,30}\s?$/", $name)) {
-    //     $error_name = "El nombre es invalido";
-    // }
-
-    // if (empty($firstName)) {
-    //     $error_firstName = "El Apellido es obligatorio";
-    // } elseif (!preg_match("/^[a-zA-Z ]{3,30}\s?$/", $firstName)) {
-    //     $error_firstName = "El Apellido es invalido";
-    // }
-
-    // if (empty($lastName)) {
-    //     $error_lastName = "El Apellido es obligatorio";
-    // } elseif (!preg_match("/^[a-zA-Z ]{3,30}\s?$/", $lastName)) {
-    //     $error_lastName = "El Apellido es invalido";
-    // }
-
-    // if (empty($tel)) {
-    //     $error_tel = "El Telefono es obligatorio";
-    // } elseif (!preg_match("/^[0-9]{10}?$/", $tel)) {
-    //     $error_tel = "El Telefono es invalido";
-    // }
-
-    // if (empty($cel)) {
-    //     $error_cel = "El Celular es obligatorio";
-    // } elseif (!preg_match("/^[0-9]{10}?$/", $cel)) {
-    //     $error_cel = "El Celular es invalido";
-    // }
-
-    // if (empty($mail)) {
-    //     $error_mail = "El email es obligatorio";
-    // } elseif (!preg_match("/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/", $mail)) {
-    //     $error_mail = "El email es invalido";
-    // }
-
     if (empty($mes)) {
         $error_mes = "Esta opción es obligatoria";
     }
@@ -99,20 +63,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $create_id = substr($lcurp, 0, 10) . str_replace("-", "", $fecha);
 
-        require_once('../class/class_alumno/class_alumno_dal.php');
+        require_once('class_alumno\class_alumno_dal.php');
+        require_once ('class_ticket\class_ticket_dal.php');
 
         $obj_alumno = new catalogo_alumno_dal;
         $result_exis = $obj_alumno->existe_alumno($lcurp);
         if ($result_exis == 1) {
-            
-            require_once('..\class\class_ticket\class_ticket_dal.php');
             $obj_ticket = new catalogo_ticket_dal;
             $result_exis = $obj_ticket->existe_ticket($create_id);
             if ($result_exis == 1) {
                 header("Location: confirmacion.php?exito=0&create_id=$create_id&lcurp=$lcurp");
                 exit();
             } else {
-                $obj_ins = new catalogo_ticket($create_id, $fname, $lcurp,  $fecha, $mes, $mes1, $mes2, 'PENDIENTE');
+                $obj_ticket = new catalogo_ticket_dal;
+                $result_exis = $obj_ticket->existe_ticket_municipio("$mes2");
+                $turno = $result_exis +1;
+                $obj_ins = new catalogo_ticket(strtoupper($create_id), strtoupper($fname), strtoupper($lcurp),  $fecha, $mes, $mes1, $mes2, 'PENDIENTE', $turno);
                 $result_ins = $obj_ticket->inserta_ticket($obj_ins);
                 if ($result_ins == 1) {
                     header("Location: confirmacion.php?exito=1&create_id=$create_id&lcurp=$lcurp");
