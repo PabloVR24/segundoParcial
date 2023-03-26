@@ -38,12 +38,13 @@ if ($result_del == 1) {
 }
 
 // UPDATE
-$obj_upd = new catalogo_ticket("id_ticket3", "2023-02-27");
+$obj_upd = new catalogo_ticket("id_ticket3", "2023-12-27");
 $result_upd = $obj_ticket->actualizar_ticket($obj_upd);
 if ($result_upd == 1) {
     echo "<h2 style = 'color:green'>ACTUALIZADO CORRECTAMENTE</h2>";
 } else {
     echo "<h2 style = 'color:red'>NO SE ACTUALIZO TICKET</h2>";
+    echo "FECHA value: " . $obj_upd->getID_TICKET() . "\n";
 }
 
 //existe curso

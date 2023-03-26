@@ -106,8 +106,8 @@ class catalogo_ticket_dal extends class_db
 
     function actualizar_ticket($obj)
     {
-        $sql = "UPDATE TICKET SET ";
-        $sql .= "FECHA=" . "'" . $obj->getFECHA() . "'";
+        $sql = "UPDATE Ticket SET ";
+        $sql .= "FECHA=" . "'" . $obj->getNOMBRE_USUARIO() . "'";
         $sql .= "WHERE id_ticket= '" . $obj->getID_TICKET() . "'";
 
         $this->set_sql($sql);

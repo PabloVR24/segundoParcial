@@ -94,12 +94,12 @@ if ($exito) {
             }
 
             if (empty($error_fecha)) {
-                $obj_upd = new catalogo_ticket($fecha1, $create_id);
+                $obj_upd = new catalogo_ticket($create_id, $fecha1);
                 $result_upd = $obj_ticket->actualizar_ticket($obj_upd);
                 if ($result_upd == 1) {
                     echo "<script>alert('ACTUALIZADO CON EXITO')</script>";
                 } else {
-                    echo $result_upd;
+                    echo "<script>alert('NO SE PUDO ACTUALIZAR')</script>";
                 }
             }
         }
