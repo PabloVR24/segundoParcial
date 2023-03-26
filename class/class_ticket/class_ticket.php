@@ -5,7 +5,6 @@ if (class_exists("catalogo_ticket") != true) {
         protected $ID_TICKET;
         protected $NOMBRE_USUARIO;
         protected $CURP;
-        protected $NOMBRE;
         protected $FECHA;
         protected $ID_ASUNTO;
         protected $ID_NIVEL;
@@ -55,18 +54,6 @@ if (class_exists("catalogo_ticket") != true) {
         {
             $this->CURP = $CURP;
         }
-
-        public function getNOMBRE()
-        {
-            return $this->NOMBRE;
-        }
-
-        public function setNOMBRE($NOMBRE)
-        {
-            $this->NOMBRE = $NOMBRE;
-        }
-
-
 
         public function getID_ASUNTO()
         {

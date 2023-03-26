@@ -1,6 +1,6 @@
 <?php
 include('class_usuario.php');
-include('..\class\class_ticket\class_db.php');
+include(__DIR__ . '../../class_db/class_db.php');
 
 class catalogo_usuario_dal extends class_db
 {

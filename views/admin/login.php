@@ -1,6 +1,6 @@
 <?php
-include('../class/class_db/class_db.php');
-include('../class/class_usuarios/class_usuario_dal.php');
+include(__DIR__ . '/../../class/class_db/class_db.php');
+include(__DIR__ . '/../../class/class_usuarios/class_usuario_dal.php');
 
 if (isset($_POST['submit'])) {
     $id = $_POST['username'];
@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     if ($result_exis == 1) {
         session_start();
         $_SESSION['id'] = $id;
-        header("Location: index.php");
+        header("Location: ../users/index.php");
         exit();
     } else {
         echo "<script>alert('El usuario o la contraseña son incorrectos')</script>";

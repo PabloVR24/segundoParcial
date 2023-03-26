@@ -1,8 +1,18 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
-    header("Location: ../views/admins/login.php");
+    header("Location: ../admin/login.php");
     exit();
+} else {
+    include(__DIR__ . '/../class/class_usuarios/class_usuario_dal.php');
+
+    $obj_usuario = new catalogo_usuario_dal;
+    $resultado = $obj_usuario->datos_por_id($_SESSION['id']);
+    if ($resultado == null) {
+        echo "<h2 style = 'color:red'>NO SE ENCONTRO REGISTRO</h2>";
+    } else {
+        $nombre = ($resultado->getNOMBRE());
+    }
 }
 ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
@@ -38,10 +48,10 @@ if (!isset($_SESSION['id'])) {
             </ul>
             <li class="nav-item dropdown" style="list-style: none;">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    PABLO VALERA RANGEL
+                    <?php echo $nombre ?>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="logout.php">Cerrar Sesión</a></li>
+                    <li><a class="dropdown-item" href="\Practica 2\includes\logout.php">Cerrar Sesión</a></li>
                 </ul>
             </li>
         </div>

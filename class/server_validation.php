@@ -19,12 +19,6 @@ $mes2 = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fname = test_input($_POST["fname"]);
     $lcurp = test_input($_POST["lCurp"]);
-    // $name = test_input($_POST["name"]);
-    // $firstName = test_input($_POST["firstName"]);
-    // $lastName = test_input($_POST["lastName"]);
-    // $tel = test_input($_POST["tel"]);
-    // $cel = test_input($_POST["cel"]);
-    // $mail = test_input($_POST["mail"]);
     $mes = test_input($_POST["mes"]);
     $mes1 = test_input($_POST["mes1"]);
     $mes2 = test_input($_POST["mes2"]);
@@ -64,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $create_id = substr($lcurp, 0, 10) . str_replace("-", "", $fecha);
 
         require_once('class_alumno\class_alumno_dal.php');
-        require_once ('class_ticket\class_ticket_dal.php');
+        require_once('class_ticket\class_ticket_dal.php');
 
         $obj_alumno = new catalogo_alumno_dal;
         $result_exis = $obj_alumno->existe_alumno($lcurp);
@@ -77,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 $obj_ticket = new catalogo_ticket_dal;
                 $result_exis = $obj_ticket->existe_ticket_municipio("$mes2");
-                $turno = $result_exis +1;
+                $turno = $result_exis + 1;
                 $obj_ins = new catalogo_ticket(strtoupper($create_id), strtoupper($fname), strtoupper($lcurp),  $fecha, $mes, $mes1, $mes2, 'PENDIENTE', $turno);
                 $result_ins = $obj_ticket->inserta_ticket($obj_ins);
                 if ($result_ins == 1) {

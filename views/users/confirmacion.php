@@ -11,6 +11,7 @@ $exito = $_GET['exito'] ?? false;
 $create_id = $_GET['create_id'] ?? '';
 $lcurp = $_GET['lcurp'] ?? '';
 $message = "";
+$fecha1 = "";
 
 $obj_ticket = new catalogo_ticket_dal;
 $resultado = $obj_ticket->datos_por_id($create_id);
@@ -41,9 +42,76 @@ if ($exito) {
         <?php
         print ("<p class = 'h4'> ESTATUS: " . $resultado->getESTATUS()) . "</p>";
         print ("Fecha: " . $resultado->getFECHA()) . "<br>";
+        print("<br>");
         print("Nombre Completo: " . $res_alumno->getNOMBRE() . " " . $res_alumno->getAPELLIDO_PAT() . " " . $res_alumno->getAPELLIDO_MAT());
+        print("<br>");
+        print("Numero de Turno " . $resultado->getTURNO());
         print("<br><br><br>");
         print("Registrado por " . $resultado->getNOMBRE_USUARIO())
         ?>
+
+        <input type="checkbox" id="mostrar_area" name="mostrar_area" onchange="mostrarOcultarArea()">Editar<br>
+
+        <div id="area" style="display: none;">
+            <form action="" method="post">
+
+                <div class="box">
+                    <label for="fecha1">Fecha de Cita:</label>
+                    <input type="date" id="fecha1" name="fecha1" value="<?php echo isset($_POST["fecha1"]) ? $_POST["fecha1"] : ""; ?>">
+                    <br>
+                    <?php if (!empty($error_fecha)) { ?>
+                        <span class="error"><?php echo $error_fecha; ?></span>
+                    <?php } ?>
+                </div>
+                <div class="wrapper">
+                    <div class="box">
+                        <input type="submit" id="btnSubmit" value="Enviar" />
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            function mostrarOcultarArea() {
+                var checkbox = document.getElementById("mostrar_area");
+                var area = document.getElementById("area");
+                if (checkbox.checked == true) {
+                    area.style.display = "block";
+                } else {
+                    area.style.display = "none";
+                }
+            }
+        </script>
+
+
+        <?php
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $fecha1 = test_input($_POST["fecha1"]);
+
+            if (empty($fecha1)) {
+                $error_fecha = "La fecha es obligatoria";
+            }
+
+            if (empty($error_fecha)) {
+                $obj_upd = new catalogo_ticket($fecha1, $create_id);
+                $result_upd = $obj_ticket->actualizar_ticket($obj_upd);
+                if ($result_upd == 1) {
+                    echo "<script>alert('ACTUALIZADO CON EXITO')</script>";
+                } else {
+                    echo $result_upd;
+                }
+            }
+        }
+
+        function test_input($data)
+        {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+        ?>
+
     </div>
 </div>
