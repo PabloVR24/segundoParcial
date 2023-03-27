@@ -1,5 +1,8 @@
 <?php
-include(__DIR__ . '/../../includes/navbar.php')
+include(__DIR__ . '/../../includes/navbar.php');
+$url = "http://localhost:3000/api/alumnos";
+$response = file_get_contents($url);
+$datos = json_decode($response, true);
 ?>
 
 <!DOCTYPE html>
@@ -7,11 +10,18 @@ include(__DIR__ . '/../../includes/navbar.php')
 
 <head>
     <meta charset="UTF-8">
-    <title>Formulario de películas</title>
+    <title>CRUD - Alumnos</title>
 </head>
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="../../css/styles-cruds.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#alumnosTable').DataTable();
+    });
+</script>
 
 <body>
     <div class="container">
@@ -53,30 +63,53 @@ include(__DIR__ . '/../../includes/navbar.php')
                 </form>
             </div>
             <div class="col">
+                <table id="alumnosTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>CURP</th>
+                            <th>NOMBRE</th>
+                            <th>APELLIDO PATERNO</th>
+                            <th>APELLIDO MATERNO</th>
+                            <th>TELEFONO</th>
+                            <th>CELULAR</th>
+                            <th>EMAIL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <?php foreach ($datos as $alumno) { ?>
+                                <td>
+                                    <?php echo $alumno['CURP']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $alumno['NOMBRE']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $alumno['APELLIDO_PAT']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $alumno['APELLIDO_MAT']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $alumno['TELEFONO']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $alumno['CELULAR']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $alumno['EMAIL']; ?>
+                                </td>
+                        </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
 
-                <ul id="lista-alumnos"></ul>
             </div>
         </div>
 
     </div>
 
     <script>
-        const listaAlumnos = document.getElementById('lista-alumnos');
-
-        async function obtenerPeliculas() {
-            const response = await fetch('http://localhost:3000/api/alumnos');
-            const data = await response.json();
-
-            listaAlumnos.innerHTML = '';
-            data.forEach((alumno) => {
-                const li = document.createElement('li');
-                li.textContent = `${alumno.CURP} - ${alumno.NOMBRE} - (${alumno.APELLIDO_PAT}) - ${alumno.APELLIDO_MAT} - ${alumno.TELEFONO} - ${alumno.CELULAR} - ${alumno.EMAIL}`;
-                listaAlumnos.appendChild(li);
-            });
-        }
-
-        obtenerPeliculas()
-
         function crearAlumno() {
             const curp = document.getElementById("curp").value;
             const nombre = document.getElementById("nombre").value;
@@ -109,7 +142,7 @@ include(__DIR__ . '/../../includes/navbar.php')
                         title: 'CORRECTO',
                         text: 'Registro Agregado con Exito',
                     })
-                    obtenerPeliculas()
+
                 })
                 .catch(error => {
                     Swal.fire({
@@ -153,7 +186,7 @@ include(__DIR__ . '/../../includes/navbar.php')
                         title: 'CORRECTO',
                         text: 'Registro Actualizado con Exito',
                     })
-                    obtenerPeliculas()
+
                 })
                 .catch(error => {
                     Swal.fire({
@@ -178,7 +211,7 @@ include(__DIR__ . '/../../includes/navbar.php')
                             title: 'CORRECTO',
                             text: 'Registro Eliminado con Exito',
                         })
-                        obtenerPeliculas()
+
                     } else if (response.status === 500) {
                         throw new Error('No se puede eliminar el registro porque tiene referencias')
                     } else {
