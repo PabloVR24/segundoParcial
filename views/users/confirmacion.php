@@ -78,6 +78,11 @@ if ($exito) {
             <input type="submit" name="submit" value="Generar PDF">
         </form>
 
+        <form action="../../actions/generar_qr.php" method="POST">
+            <input hidden type="text" name="lcurp" id="lcurp" value="<?php echo $lcurp ?>">
+            <input type="submit" name="submit" value="Generar QR">
+        </form>
+
         <script>
             function mostrarOcultarArea() {
                 var checkbox = document.getElementById("mostrar_area");
