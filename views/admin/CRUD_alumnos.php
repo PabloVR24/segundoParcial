@@ -32,7 +32,7 @@ $datos = json_decode($response, true);
 
                     <div class="form-gs">
 
-                        <h3>Alumnos</h3>
+                        <h3>Catalogo: Alumnos</h3>
                         <label for="curp">CURP:</label>
                         <input class="controls" type="text" id="curp" name="curp"><br><br>
 
@@ -55,6 +55,7 @@ $datos = json_decode($response, true);
                         <input class="controls" type="text" id="email" name="email"><br><br>
 
                         <div class="btns">
+                            <button id="get" class="buttons" type="button" onclick="obtenerAlumno()">Obtener</button>
                             <button id="update" class="buttons" type="button" onclick="actualizarRegistro()">Actualizar</button>
                             <button id="create" class="buttons" type="button" onclick="crearAlumno()">Crear</button>
                             <button id="delete" class="buttons" type="button" onclick="eliminarRegistro()">Eliminar</button>
@@ -110,6 +111,29 @@ $datos = json_decode($response, true);
     </div>
 
     <script>
+        async function obtenerAlumno() {
+            const curp = document.getElementById("curp").value;
+            const nombre = document.getElementById("nombre");
+            const apellido_pat = document.getElementById("apellido_pat");
+            const apellido_mat = document.getElementById("apellido_mat");
+            const telefono = document.getElementById("telefono");
+            const celular = document.getElementById("celular");
+            const email = document.getElementById("email");
+
+            const response = await fetch(`http://localhost:3000/api/alumnos/"${curp}"`)
+            const data = await response.json();
+
+            data.forEach((alumno) => {
+                nombre.value = `${alumno.NOMBRE}`;
+                apellido_pat.value = `${alumno.APELLIDO_PAT}`;
+                apellido_mat.value = `${alumno.APELLIDO_MAT}`;
+                telefono.value = `${alumno.TELEFONO}`;
+                celular.value = `${alumno.CELULAR}`;
+                email.value = `${alumno.EMAIL}`;
+
+            });
+        }
+
         function crearAlumno() {
             const curp = document.getElementById("curp").value;
             const nombre = document.getElementById("nombre").value;
@@ -161,7 +185,7 @@ $datos = json_decode($response, true);
             const celular = document.getElementById("celular").value;
             const email = document.getElementById("email").value;
 
-            const curp = prompt("Introduce el CURP del alumno que deseas actualizar:");
+            const curp = document.getElementById("curp").value;
 
             const data = {
                 NOMBRE: nombre,

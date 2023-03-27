@@ -70,6 +70,12 @@ body {
     color: white;
 }
 
+#get {
+    background-color: yellow;
+    border-color: #b2b200;
+    color: black;
+}
+
 #delete {
     background-color: red;
     border-color: #ff0000;
@@ -100,20 +106,4 @@ body {
 #lista-peliculas {
     margin-top: 50px;
     text-align: center;
-}
-
-li:nth-child(2n) {
-    background-color: #5ea3ff;
-    border-radius: 5px;
-    list-style: none;
-    margin: 5px;
-    padding: 5px;
-}
-
-li:nth-child(2n - 1) {
-    background-color: #33658a;
-    border-radius: 5px;
-    list-style: none;
-    margin: 5px;
-    padding: 5px;
 }
