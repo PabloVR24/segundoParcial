@@ -14,20 +14,20 @@ $datos = json_decode($response, true);
 </head>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="../../css/styles-cruds.css">
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+<link href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.13.4/r-2.4.1/datatables.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.13.4/r-2.4.1/datatables.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#alumnosTable').DataTable();
+        $('#alumnosTable').DataTable({
+            responsive: true
+        });
     });
 </script>
 
 <body>
     <div class="container">
-
         <div class="row">
-            <div class="col">
+            <div class="col-sm-4">
                 <form>
 
                     <div class="form-gs">
@@ -62,7 +62,7 @@ $datos = json_decode($response, true);
                     </div>
                 </form>
             </div>
-            <div class="col">
+            <div class="col-sm-8">
                 <table id="alumnosTable" class="display">
                     <thead>
                         <tr>
@@ -227,4 +227,5 @@ $datos = json_decode($response, true);
         }
     </script>
 </body>
+
 </html>
