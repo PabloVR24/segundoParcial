@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    opacity: 1;
+    background-image: linear-gradient(135deg, #b9f2e1 25%, transparent 25%), linear-gradient(225deg, #b9f2e1 25%, transparent 25%), linear-gradient(45deg, #b9f2e1 25%, transparent 25%), linear-gradient(315deg, #b9f2e1 25%, #ffffff 25%);
+    background-position: 22px 0, 22px 0, 0 0, 0 0;
+    background-size: 44px 44px;
+    background-repeat: repeat;
+}
+
+.form-gs {
+    width: 400px;
+    background-color: #24303c;
+    padding: 30px;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 4px;
+    font-family: 'Calibri';
+    color: white;
+}
+
+.form-gs h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.controls {
+    width: 100%;
+    background-color: #24303c;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid #379ade;
+    font-family: 'Calibri';
+    color: white;
+}
+
+.form-gs .btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    border-radius: 4px;
+    margin: 5px;
+    width: 100px;
+    height: 50px;
+}
+
+#update {
+    background-color: #007acc;
+    border-color: #0098ff;
+    color: white;
+}
+
+#create {
+    background-color: green;
+    border-color: chartreuse;
+    color: white;
+}
+
+#delete {
+    background-color: red;
+    border-color: #ff0000;
+    color: white;
+}
+
+#update:hover {
+    background-color: #0098ff;
+    box-shadow: 0px 15px 26px #379ade;
+    color: white;
+    transform: translateY(-3px);
+}
+
+#delete:hover {
+    background-color: #ff0000;
+    box-shadow: 0px 15px 26px #b20000;
+    color: white;
+    transform: translateY(-3px);
+}
+
+#create:hover {
+    background-color: chartreuse;
+    box-shadow: 0px 15px 26px #58b200;
+    color: white;
+    transform: translateY(-3px);
+}
+
+#lista-peliculas {
+    margin-top: 50px;
+    text-align: center;
+}
+
+li:nth-child(2n) {
+    background-color: #5ea3ff;
+    border-radius: 5px;
+    list-style: none;
+    margin: 5px;
+    padding: 5px;
+}
+
+li:nth-child(2n - 1) {
+    background-color: #33658a;
+    border-radius: 5px;
+    list-style: none;
+    margin: 5px;
+    padding: 5px;
+}
