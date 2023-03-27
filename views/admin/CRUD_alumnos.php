@@ -3,11 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Formulario de películas</title>
+    <title>Formulario</title>
 </head>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="../../css/styles-cruds.css">
 
@@ -47,9 +46,9 @@ include(__DIR__ . '/../../includes/navbar.php')
                         <input class="controls" type="text" id="email" name="email"><br><br>
 
                         <div class="btns">
-                            <button id="update" class="buttons" type="button" onclick="actualizarPelicula()">Actualizar</button>
+                            <button id="update" class="buttons" type="button" onclick="actualizarRegistro()">Actualizar</button>
                             <button id="create" class="buttons" type="button" onclick="crearAlumno()">Crear</button>
-                            <button id="delete" class="buttons" type="button" onclick="eliminarPelicula()">Eliminar</button>
+                            <button id="delete" class="buttons" type="button" onclick="eliminarRegistro()">Eliminar</button>
                         </div>
                     </div>
                 </form>
@@ -65,7 +64,7 @@ include(__DIR__ . '/../../includes/navbar.php')
     <script>
         const listaAlumnos = document.getElementById('lista-alumnos');
 
-        async function obtenerPeliculas() {
+        async function Registro() {
             const response = await fetch('http://localhost:3000/api/alumnos');
             const data = await response.json();
 
@@ -77,7 +76,7 @@ include(__DIR__ . '/../../includes/navbar.php')
             });
         }
 
-        obtenerPeliculas()
+        Registro()
 
         function crearAlumno() {
             const curp = document.getElementById("curp").value;
@@ -112,7 +111,7 @@ include(__DIR__ . '/../../includes/navbar.php')
                         title: 'CORRECTO',
                         text: 'Registro Agregado con Exito',
                     })
-                    obtenerPeliculas()
+                    Registro()
                 })
                 .catch(error => {
                     Swal.fire({
@@ -124,7 +123,7 @@ include(__DIR__ . '/../../includes/navbar.php')
                 });
         }
 
-        function actualizarPelicula() {
+        function actualizarRegistro() {
             const nombre = document.getElementById("nombre").value;
             const apellido_pat = document.getElementById("apellido_pat").value;
             const apellido_mat = document.getElementById("apellido_mat").value;
@@ -156,7 +155,7 @@ include(__DIR__ . '/../../includes/navbar.php')
                         title: 'CORRECTO',
                         text: 'Registro Actualizado con Exito',
                     })
-                    obtenerPeliculas()
+                    Registro()
                 })
                 .catch(error => {
                     Swal.fire({
@@ -168,7 +167,7 @@ include(__DIR__ . '/../../includes/navbar.php')
                 });
         }
 
-        function eliminarPelicula() {
+        function eliminarRegistro() {
             const curp = prompt("Introduce el CURP del Alumno que deseas eliminar:");
 
             fetch(`http://localhost:3000/api/alumnos/"${curp}"`, {
@@ -180,7 +179,7 @@ include(__DIR__ . '/../../includes/navbar.php')
                         title: 'CORRECTO',
                         text: 'Registro Eliminado con Exito',
                     })
-                    obtenerPeliculas()
+                    Registro()
                 })
                 .catch(error => {
                     Swal.fire({
@@ -193,5 +192,4 @@ include(__DIR__ . '/../../includes/navbar.php')
         }
     </script>
 </body>
-
 </html>
