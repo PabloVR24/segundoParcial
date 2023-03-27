@@ -10,15 +10,8 @@ $datos = json_decode($response, true);
 
 <head>
     <meta charset="UTF-8">
-<<<<<<< HEAD
-    <title>Formulario</title>
-</head>
-
-
-=======
     <title>CRUD - Alumnos</title>
 </head>
->>>>>>> ceb7631bd4991ba2b32549c296228320e9db5eb6
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="../../css/styles-cruds.css">
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -117,25 +110,6 @@ $datos = json_decode($response, true);
     </div>
 
     <script>
-<<<<<<< HEAD
-        const listaAlumnos = document.getElementById('lista-alumnos');
-
-        async function Registro() {
-            const response = await fetch('http://localhost:3000/api/alumnos');
-            const data = await response.json();
-
-            listaAlumnos.innerHTML = '';
-            data.forEach((alumno) => {
-                const li = document.createElement('li');
-                li.textContent = `${alumno.CURP} - ${alumno.NOMBRE} - (${alumno.APELLIDO_PAT}) - ${alumno.APELLIDO_MAT} - ${alumno.TELEFONO} - ${alumno.CELULAR} - ${alumno.EMAIL}`;
-                listaAlumnos.appendChild(li);
-            });
-        }
-
-        Registro()
-
-=======
->>>>>>> ceb7631bd4991ba2b32549c296228320e9db5eb6
         function crearAlumno() {
             const curp = document.getElementById("curp").value;
             const nombre = document.getElementById("nombre").value;
@@ -168,11 +142,6 @@ $datos = json_decode($response, true);
                         title: 'CORRECTO',
                         text: 'Registro Agregado con Exito',
                     })
-<<<<<<< HEAD
-                    Registro()
-=======
-
->>>>>>> ceb7631bd4991ba2b32549c296228320e9db5eb6
                 })
                 .catch(error => {
                     Swal.fire({
@@ -216,11 +185,6 @@ $datos = json_decode($response, true);
                         title: 'CORRECTO',
                         text: 'Registro Actualizado con Exito',
                     })
-<<<<<<< HEAD
-                    Registro()
-=======
-
->>>>>>> ceb7631bd4991ba2b32549c296228320e9db5eb6
                 })
                 .catch(error => {
                     Swal.fire({
@@ -239,14 +203,6 @@ $datos = json_decode($response, true);
                     method: "DELETE"
                 })
                 .then(response => {
-<<<<<<< HEAD
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'CORRECTO',
-                        text: 'Registro Eliminado con Exito',
-                    })
-                    Registro()
-=======
                     if (response.ok) {
                         Swal.fire({
                             icon: 'success',
@@ -259,7 +215,6 @@ $datos = json_decode($response, true);
                     } else {
                         throw new Error('El registro no pudo ser eliminado')
                     }
->>>>>>> ceb7631bd4991ba2b32549c296228320e9db5eb6
                 })
                 .catch(error => {
                     Swal.fire({
