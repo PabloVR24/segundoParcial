@@ -1,4 +1,5 @@
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<link rel="stylesheet" href="../../css/style_login.css">
 
 <?php
 include(__DIR__ . '/../../class/class_db/class_db.php');
@@ -43,14 +44,17 @@ if (isset($_POST['submit'])) {
 
 <body>
     <form method="POST">
+
+        <img src="../../src/images/SecEd.png" alt="" width="200">
+
         <label for="username">Nombre de Usuario:</label>
         <input type="text" name="username" id="username">
 
-        <label for="password">Contraseña</label>
-        <input type="text" name="password" id="password">
+        <label for="password">Contraseña:</label>
+        <input type="password" name="password" id="password">
 
-        <input type="submit" name="submit" value="Enviar">
         <div class="g-recaptcha" data-sitekey="6LeWhTMlAAAAAGp7lWabk7hmOiLk1B7qAh-3m6s_"></div>
+        <input type="submit" name="submit" value="Enviar">
     </form>
 
 </body>
