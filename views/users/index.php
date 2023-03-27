@@ -6,7 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Parcial 2 - Desarrollo Web</title>
+<<<<<<< HEAD
     <script defer src="../js/validate.js"></script>
+=======
+    <script defer src="../../js/validate.js"></script>
+>>>>>>> f66309ef19e2e8a4ab2e9e2edf3aac175879bef5
     <link rel="stylesheet" href="../../css/styles.css">
     <script src="
 https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js

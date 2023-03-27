@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #011627;
+    background: radial-gradient(circle, transparent 20%, #011627 20%, #011627 80%, transparent 80%, transparent),
+        radial-gradient(circle, transparent 20%, #011627 20%, #011627 80%, transparent 80%, transparent) 15px 15px,
+        linear-gradient(#b89cd7 1.2000000000000002px, transparent 1.2000000000000002px) 0 -0.6000000000000001px,
+        linear-gradient(90deg, #b89cd7 1.2000000000000002px, #011627 1.2000000000000002px) -0.6000000000000001px 0;
+    background-size: 150px 150px, 150px 150px, 15px 15px, 15px 15px;
+}
+
+form {
+    background-color: #fff;
+    width: 305px;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+label {
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #00000052;
+    font-size: 16px;
+    margin-bottom: 20px;
+    background-color: #d8d8d8;
+
+}
+
+input[type="submit"] {
+    background-color: #b89cd7;
+    padding: 10px 20px;
+    border-radius: 3px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #00000052;
+}
+
+input[type="submit"]:hover {
+    background-color: #7d5689;
+}
+
+.g-recaptcha {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 25px;
+
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border-radius: 3%;
+}
