@@ -93,13 +93,25 @@ app.put("/api/alumnos/:CURP", (req, res) => {
 app.delete("/api/alumnos/:id", (req, res) => {
     const id = req.params.id;
 
-    db.query(`DELETE FROM alumno WHERE CURP = ${id}`, (err, result) => {
+    db.query(`SELECT COUNT(*) AS count FROM ticket WHERE CURP = ${id}`, (err, result) => {
         if (err) {
             console.log(err);
-            res.status(500).send("Error al eliminar alumno");
+            res.status(500).send("Error al verificar referencias");
         } else {
-            console.log(`Alumno eliminado con el CURP: ${id}`);
-            res.status(200).send("Alumno eliminado correctamente");
+            const count = result[0].count;
+            if (count > 0) {
+                res.status(500).send("No se puede eliminar el alumno porque tiene referencias en la tabla ticket");
+            } else {
+                db.query(`DELETE FROM alumno WHERE CURP = ${id}`, (err, result) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send("Error al eliminar alumno");
+                    } else {
+                        console.log(`Alumno eliminado con el CURP: ${id}`);
+                        res.status(200).send("Alumno eliminado correctamente");
+                    }
+                });
+            }
         }
     });
 });
