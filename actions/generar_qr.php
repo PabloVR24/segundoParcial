@@ -17,21 +17,5 @@ if (file_exists("../FPDF/phpqrcode/qrlib.php")) {
     $framSize = 3;
 
     QRcode::png($curp, $ruta_qr, $level, $tamaño, $framSize);
-
-    if (file_exists($ruta_qr)) {
-        $error = 0;
-        $mensaje = "QR Generado";
-    } else {
-        $error = 1;
-        $mensaje = "No existe la libreria";
-    }
-
-    $resp = [
-        "error" => $error,
-        "mensaje" => $mensaje,
-        "datos" => $ruta_qr
-    ];
-
-    echo json_encode($resp);
 }
 ?>
