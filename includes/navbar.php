@@ -85,7 +85,7 @@ if (!isset($_SESSION['id'])) {
                     <?php echo $nombre ?>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item close-sesion" href="../includes/logout.php">Cerrar Sesión</a></li>
+                    <li><a class="dropdown-item close-sesion" href="../../includes/logout.php">Cerrar Sesión</a></li>
                 </ul>
             </li>
         </div>
