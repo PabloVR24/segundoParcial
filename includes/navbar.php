@@ -61,10 +61,10 @@ if (!isset($_SESSION['id'])) {
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="../admin/admin/index.php">Inicio</a>
+                    <a class="nav-link" href="../admin/index.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../admin/admin/ticket_atention.php">Atencion a Ticket</a>
+                    <a class="nav-link" href="../admin/ticket_atention.php">Atencion a Ticket</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

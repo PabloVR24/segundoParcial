@@ -32,8 +32,8 @@ include('../../class/class_nivel/class_nivel_dal.php');
 
 <body>
     <div class="container">
-        <h2>Ticket de Turno</h2>
         <form id="forms" method="post" action="">
+            <h2>Ticket de Turno</h2>
             <div class="wrapper">
                 <div class="box">
                     <input type="text" name="fname" id="fname" value="<?php echo isset($_POST["fname"]) ? $_POST["fname"] : ""; ?>" />
