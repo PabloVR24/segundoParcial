@@ -20,8 +20,9 @@ $lcurp = $_GET['lcurp'] ?? '';
 
 <body>
     <div class="container">
-        <h2>Completar Datos</h2>
         <form id="forms" method="post" action="">
+            <h2>Completar Datos</h2>
+            <br>
             <div class="wrapper">
                 <div class="box">
                     <div class="box">
