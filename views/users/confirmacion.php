@@ -9,6 +9,7 @@
 
 require_once(__DIR__ . '/../../class/class_ticket/class_ticket_dal.php');
 require_once(__DIR__ . '/../../class/class_alumno/class_alumno_dal.php');
+include('../../includes/navbar_users.php');
 
 // Recuperar los datos y el mensaje de éxito de la URL
 $exito = $_GET['exito'] ?? false;
@@ -65,9 +66,10 @@ if ($exito) {
 
                 <div class="box">
                     <label for="fecha1">Fecha de Cita:</label>
-                    <input type="date" id="fecha1" name="fecha1"
+                    <input type="date" class="form-control" id="fecha1" name="fecha1"
                         value="<?php echo isset($_POST["fecha1"]) ? $_POST["fecha1"] : ""; ?>">
                     <br>
+                    
                     <?php if (!empty($error_fecha)) { ?>
                         <span class="error">
                             <?php echo $error_fecha; ?>
