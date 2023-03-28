@@ -17,7 +17,7 @@ $datos = json_decode($response, true);
 <link href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.13.4/r-2.4.1/datatables.min.css" rel="stylesheet" />
 <script src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.13.4/r-2.4.1/datatables.min.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#alumnosTable').DataTable({
             responsive: true
         });
@@ -26,88 +26,84 @@ $datos = json_decode($response, true);
 
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <form>
+        <div class="CRUD">
+            <form>
+                <div class="form-gs">
 
-                    <div class="form-gs">
+                    <h3>Catalogo: Alumnos</h3>
+                    <label for="curp">CURP:</label>
+                    <input class="controls" type="text" id="curp" name="curp">
 
-                        <h3>Catalogo: Alumnos</h3>
-                        <label for="curp">CURP:</label>
-                        <input class="controls" type="text" id="curp" name="curp"><br><br>
+                    <label for="nombre">Nombre:</label>
+                    <input class="controls" type="text" id="nombre" name="nombre">
 
-                        <label for="nombre">Nombre:</label>
-                        <input class="controls" type="text" id="nombre" name="nombre"><br><br>
+                    <label for="apellido_pat">Apellido Paterno:</label>
+                    <input class="controls" type="text" id="apellido_pat" name="apellido_pat">
 
-                        <label for="apellido_pat">Apellido Paterno:</label>
-                        <input class="controls" type="text" id="apellido_pat" name="apellido_pat"><br><br>
+                    <label for="apellido_mat">Apellido Materno:</label>
+                    <input class="controls" type="text" id="apellido_mat" name="apellido_mat">
 
-                        <label for="apellido_mat">Apellido Materno:</label>
-                        <input class="controls" type="text" id="apellido_mat" name="apellido_mat"><br><br>
+                    <label for="telefono">Telefono</label>
+                    <input class="controls" type="text" id="telefono" name="telefono">
 
-                        <label for="telefono">Telefono</label>
-                        <input class="controls" type="text" id="telefono" name="telefono"><br><br>
+                    <label for="celular">Celular</label>
+                    <input class="controls" type="text" id="celular" name="celular">
 
-                        <label for="celular">Celular</label>
-                        <input class="controls" type="text" id="celular" name="celular"><br><br>
+                    <label for="email">Email</label>
+                    <input class="controls" type="text" id="email" name="email">
 
-                        <label for="email">Email</label>
-                        <input class="controls" type="text" id="email" name="email"><br><br>
-
-                        <div class="btns">
-                            <button id="get" class="buttons" type="button" onclick="obtenerAlumno()">Obtener</button>
-                            <button id="update" class="buttons" type="button" onclick="actualizarRegistro()">Actualizar</button>
-                            <button id="create" class="buttons" type="button" onclick="crearAlumno()">Crear</button>
-                            <button id="delete" class="buttons" type="button" onclick="eliminarRegistro()">Eliminar</button>
-                        </div>
+                    <div class="btns">
+                        <button id="get" class="buttons" type="button" onclick="obtenerAlumno()">Obtener</button>
+                        <button id="update" class="buttons" type="button"
+                            onclick="actualizarRegistro()">Actualizar</button>
+                        <button id="create" class="buttons" type="button" onclick="crearAlumno()">Crear</button>
+                        <button id="delete" class="buttons" type="button" onclick="eliminarRegistro()">Eliminar</button>
                     </div>
-                </form>
-            </div>
-            <div class="col-sm-8">
-                <table id="alumnosTable" class="display">
-                    <thead>
-                        <tr>
-                            <th>CURP</th>
-                            <th>NOMBRE</th>
-                            <th>APELLIDO PATERNO</th>
-                            <th>APELLIDO MATERNO</th>
-                            <th>TELEFONO</th>
-                            <th>CELULAR</th>
-                            <th>EMAIL</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <?php foreach ($datos as $alumno) { ?>
-                                <td>
-                                    <?php echo $alumno['CURP']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $alumno['NOMBRE']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $alumno['APELLIDO_PAT']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $alumno['APELLIDO_MAT']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $alumno['TELEFONO']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $alumno['CELULAR']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $alumno['EMAIL']; ?>
-                                </td>
+                </div>
+            </form>
+        </div>
+        <div class="datatable">
+            <table id="alumnosTable" class="display">
+                <thead>
+                    <tr>
+                        <th>CURP</th>
+                        <th>NOMBRE</th>
+                        <th>APELLIDO PATERNO</th>
+                        <th>APELLIDO MATERNO</th>
+                        <th>TELEFONO</th>
+                        <th>CELULAR</th>
+                        <th>EMAIL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <?php foreach ($datos as $alumno) { ?>
+                            <td>
+                                <?php echo $alumno['CURP']; ?>
+                            </td>
+                            <td>
+                                <?php echo $alumno['NOMBRE']; ?>
+                            </td>
+                            <td>
+                                <?php echo $alumno['APELLIDO_PAT']; ?>
+                            </td>
+                            <td>
+                                <?php echo $alumno['APELLIDO_MAT']; ?>
+                            </td>
+                            <td>
+                                <?php echo $alumno['TELEFONO']; ?>
+                            </td>
+                            <td>
+                                <?php echo $alumno['CELULAR']; ?>
+                            </td>
+                            <td>
+                                <?php echo $alumno['EMAIL']; ?>
+                            </td>
                         </tr>
                     <?php } ?>
-                    </tbody>
-                </table>
-
-            </div>
+                </tbody>
+            </table>
         </div>
-
     </div>
 
     <script>
@@ -154,12 +150,12 @@ $datos = json_decode($response, true);
             };
 
             fetch("http://localhost:3000/api/alumnos", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(data)
-                })
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
                 .then(response => {
                     Swal.fire({
                         icon: 'success',
@@ -197,12 +193,12 @@ $datos = json_decode($response, true);
             };
 
             fetch(`http://localhost:3000/api/alumnos/"${curp}"`, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(data)
-                })
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
                 .then(response => {
                     Swal.fire({
                         icon: 'success',
@@ -224,8 +220,8 @@ $datos = json_decode($response, true);
             const curp = prompt("Introduce el CURP del Alumno que deseas eliminar:");
 
             fetch(`http://localhost:3000/api/alumnos/"${curp}"`, {
-                    method: "DELETE"
-                })
+                method: "DELETE"
+            })
                 .then(response => {
                     if (response.ok) {
                         Swal.fire({

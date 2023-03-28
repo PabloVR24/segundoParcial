@@ -1,8 +1,24 @@
 <?php
 require('../FPDF/fpdf.php');
 require_once(__DIR__ . '/../class/class_alumno/class_alumno_dal.php');
+require_once(__DIR__ . '/../class/class_ticket/class_ticket_dal.php');
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $curp = $_POST['lcurp'];
+    $obj_alumno = new catalogo_alumno_dal;
+    $res_alumno = $obj_alumno->datos_por_id($curp);
+}
 
+if (file_exists("../FPDF/phpqrcode/qrlib.php")) {
+    require("../FPDF/phpqrcode/qrlib.php");
+
+    $ruta_qr = "../FPDF/phpqrcode/qrcodes/" . $curp . ".png";
+    $tamaño = 10;
+    $level = "Q";
+    $framSize = 3;
+
+    QRcode::png($curp, $ruta_qr, $level, $tamaño, $framSize);
+}
 
 class PDF extends FPDF
 {
@@ -10,8 +26,8 @@ class PDF extends FPDF
     function Header()
     {
         if ($this->PageNo() == 1) {
-            $this->Image('../src/images/SecEd.png', 80, 6, 50);
-            $this->Ln(25);
+            $this->Image('../src/images/frame.png', 0, 0, 210);
+            $this->Ln(30);
             $this->SetFont('Arial', 'B', 25);
             $this->Cell(0, 20, 'Ticket de Turno', 0, 1, 'C');
         }
@@ -21,8 +37,6 @@ class PDF extends FPDF
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $curp = $_POST['lcurp'];
-            $obj_alumno = new catalogo_alumno_dal;
-            $res_alumno = $obj_alumno->datos_por_id($curp);
         }
 
         $this->Image('../FPDF/phpqrcode/qrcodes/' . $curp . '.png', 80, 100, 50, 50);
@@ -37,19 +51,23 @@ class PDF extends FPDF
             $curp = $_POST['lcurp'];
             $obj_alumno = new catalogo_alumno_dal;
             $res_alumno = $obj_alumno->datos_por_id($curp);
+            //$obj_ticket = new catalogo_ticket_dal;
+            //$res_ticket = $obj_ticket->datos_por_id($curp);
         }
 
 
-        $this->SetFont('Arial', 'B', 16);
-        $this->Cell(40, 10, 'Datos del PDF');
-        $this->Ln(10);
+        
         $this->SetFont('Arial', '', 12);
         $this->Cell(40, 10, 'Nombre: ' . $res_alumno->getNOMBRE() . " " . $res_alumno->getAPELLIDO_PAT() . " " . $res_alumno->getAPELLIDO_MAT());
-        $this->Ln(10);
+        $this->Ln(7);
         $this->Cell(40, 10, 'Correo electronico: ' . " " . $res_alumno->getEMAIL());
+        $this->Ln(7);
+        $this->Cell(40, 10, 'Telefono: ' . " " . $res_alumno->getTELEFONO());
+        $this->Ln(7);
+        //$this->Cell(40, 10, 'Hola ' . $res_alumno->getNOMBRE() . " su ticket indica que su turno es el:  " . $res_ticket->getFECHA());
+
     }
 }
-
 
 $pdf = new PDF();
 $pdf->AddPage();
