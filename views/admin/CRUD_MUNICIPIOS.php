@@ -1,6 +1,6 @@
 <?php
 include(__DIR__ . '/../../includes/navbar.php');
-$url = "http://localhost:3000/api/alumnos";
+$url = "http://localhost:3000/api/municipios";
 $response = file_get_contents($url);
 $datos = json_decode($response, true);
 ?>
@@ -29,28 +29,12 @@ $datos = json_decode($response, true);
         <div class="CRUD">
             <form>
                 <div class="form-gs">
-
                     <h3>Catalogo: Alumnos</h3>
                     <label for="curp">CURP:</label>
                     <input class="controls" type="text" id="curp" name="curp">
 
                     <label for="nombre">Nombre:</label>
                     <input class="controls" type="text" id="nombre" name="nombre">
-
-                    <label for="apellido_pat">Apellido Paterno:</label>
-                    <input class="controls" type="text" id="apellido_pat" name="apellido_pat">
-
-                    <label for="apellido_mat">Apellido Materno:</label>
-                    <input class="controls" type="text" id="apellido_mat" name="apellido_mat">
-
-                    <label for="telefono">Telefono</label>
-                    <input class="controls" type="text" id="telefono" name="telefono">
-
-                    <label for="celular">Celular</label>
-                    <input class="controls" type="text" id="celular" name="celular">
-
-                    <label for="email">Email</label>
-                    <input class="controls" type="text" id="email" name="email">
 
                     <div class="btns">
                         <button id="get" class="buttons" type="button" onclick="obtenerRegistro()">Obtener</button>
@@ -65,38 +49,18 @@ $datos = json_decode($response, true);
             <table id="alumnosTable" class="display">
                 <thead>
                     <tr>
-                        <th>CURP</th>
-                        <th>NOMBRE</th>
-                        <th>APELLIDO PATERNO</th>
-                        <th>APELLIDO MATERNO</th>
-                        <th>TELEFONO</th>
-                        <th>CELULAR</th>
-                        <th>EMAIL</th>
+                        <th>ID_MUNICIPIO</th>
+                        <th>NOMBRE_MUNICIPIO</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <?php foreach ($datos as $alumno) { ?>
+                        <?php foreach ($datos as $municipio) { ?>
                             <td>
-                                <?php echo $alumno['CURP']; ?>
+                                <?php echo $municipio['ID_MUNICIPIO']; ?>
                             </td>
                             <td>
-                                <?php echo $alumno['NOMBRE']; ?>
-                            </td>
-                            <td>
-                                <?php echo $alumno['APELLIDO_PAT']; ?>
-                            </td>
-                            <td>
-                                <?php echo $alumno['APELLIDO_MAT']; ?>
-                            </td>
-                            <td>
-                                <?php echo $alumno['TELEFONO']; ?>
-                            </td>
-                            <td>
-                                <?php echo $alumno['CELULAR']; ?>
-                            </td>
-                            <td>
-                                <?php echo $alumno['EMAIL']; ?>
+                                <?php echo $municipio['NOMBRE_MUNICIPIO']; ?>
                             </td>
                     </tr>
                 <?php } ?>

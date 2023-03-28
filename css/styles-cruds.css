@@ -12,17 +12,15 @@
     align-items: center;
 }
 
-.CRUD{
+.CRUD {
     flex: 0 0 30%;
-
 }
 
-.datatables{
+.datatables {
     flex: 0 0 70%;
-
 }
 
-.display{
+.display {
     margin: 0 auto;
 }
 
@@ -54,7 +52,7 @@ body {
     margin-top: 5px;
     border: 1px solid #379ade;
     font-family: 'Calibri';
-    color: white;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -125,15 +123,13 @@ body {
 
 @media (max-width: 768px) {
     .container {
-      flex-direction: column;
+        flex-direction: column;
     }
-  
     .CRUD {
-      flex: 0 0 100%;
-      margin-bottom: 20px;
+        flex: 0 0 100%;
+        margin-bottom: 20px;
     }
-  
     .datatables {
-      flex: 0 0 100%;
+        flex: 0 0 100%;
     }
-  }
+}

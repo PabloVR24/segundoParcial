@@ -123,12 +123,15 @@ app.delete("/api/alumnos/:id", (req, res) => {
     );
 });
 
+// TODO: 
+// TODO: 
+// TODO: 
+// TODO: 
+// TODO: 
+// TODO: 
+// TODO: 
+// TODO: 
 
-
-
-
-
-//TODO: TERMINAR@high
 app.get("/api/usuarios", (req, res) => {
     db.query("SELECT * FROM usuarios", (err, result) => {
         if (err) {
@@ -202,3 +205,98 @@ app.delete("/api/usuarios/:NOMBRE_USUARIO", (req, res) => {
     }
 
 );
+
+// TODO: 
+// TODO: 
+// TODO: 
+// TODO: 
+// TODO: 
+// TODO: 
+
+app.get("/api/municipios", (req, res) => {
+    db.query("SELECT * FROM municipio", (err, result) => {
+        if (err) {
+            console.log(err);
+            throw err;
+        }
+        res.send(result);
+    });
+});
+
+app.get("/api/municipios/:id_municipio", (req, res) => {
+    const id = req.params.id_municipio;
+    db.query(
+        `SELECT * FROM municipio WHERE id_municipio = ${id}`,
+        (err, result) => {
+            if (err) {
+                console.log(err);
+                throw err;
+            }
+            res.send(result);
+        }
+    );
+});
+
+app.post("/api/municipios", (req, res) => {
+    const nombre_municipio = req.body.NOMBRE_MUNICIPIO;
+
+    db.query(
+        `INSERT INTO MUNICIPIO (ID_MUNICIPIO, NOMBRE_MUNICIPIO) VALUES (NULL, '${nombre_municipio}')`,
+        (err, result) => {
+            if (err) {
+                console.log(err);
+                throw err;
+            }
+            res.send("Municipio agregado con éxito");
+        }
+    );
+});
+
+app.put("/api/municipios/:id_municipio", (req, res) => {
+    const id_municipio = req.params.id_municipio;
+    const nombre_municipio = req.body.NOMBRE_MUNICIPIO;
+
+
+    db.query(
+        `UPDATE MUNICIPIO SET nombre = '${nombre_municipio}' WHERE NOMBRE_USUARIO = ${id_municipio}`,
+        (err, result) => {
+            if (err) {
+                console.log(err);
+                throw err;
+            }
+            res.send("Municipio actualizado con éxito");
+        }
+    );
+});
+
+app.delete("/api/municipios/:id", (req, res) => {
+    const id = req.params.id;
+    db.query(
+        `SELECT COUNT(*) AS count FROM ticket WHERE ID_MUNICIPIO = ${id}`,
+        (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).send("Error al verificar referencias");
+            } else {
+                const count = result[0].count;
+                if (count > 0) {
+                    res
+                        .status(500)
+                        .send(
+                            "No se puede eliminar el municipio porque tiene referencias en la tabla ticket"
+                        );
+                } else {
+                    db.query(`DELETE FROM municipio WHERE id_municipio = ${id}`, (err, result) => {
+                        if (err) {
+                            console.log(err);
+                            res.status(500).send("Error al eliminar alumno");
+                        } else {
+                            console.log(`Municipio eliminado con el id: ${id}`);
+                            res.status(200).send("Municipio eliminado correctamente");
+                        }
+                    });
+                }
+            }
+        }
+    );
+});
