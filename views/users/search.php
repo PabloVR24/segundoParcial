@@ -30,7 +30,8 @@ if (isset($_POST['submit'])) {
 </head>
 
 <?php
-include(__DIR__ . "../../../includes/bootstrap.php");
+include(__DIR__ . "../../../includes/sweetalert.php");
+include(__DIR__ . "../../../includes/navbar_users.php");
 ?>
 
 <style>
@@ -57,7 +58,6 @@ include(__DIR__ . "../../../includes/bootstrap.php");
         background-color: #7D5A8C;
         margin-top: 100px;
         height: 500px;
-        border-radius: 30px;
         padding-top: 50px;
         padding-left: 100px;
         padding-right: 100px;
@@ -102,7 +102,7 @@ include(__DIR__ . "../../../includes/bootstrap.php");
 
 <body>
     <div class="container">
-        <form action="" method="POST">
+        <form action="" id="forms" method="POST">
             <h1>BUSQUEDA DE TICKET</h1>
             <p>Ingresa por favor los siguientes datos</p>
             <div class="row">
@@ -116,8 +116,46 @@ include(__DIR__ . "../../../includes/bootstrap.php");
 
                 </div>
             </div>
-            <input class="submit" type="submit" name="submit" value="Enviar">
+            <input class="submit" id="btnSubmit" type="submit" name="submit" value="Enviar">
         </form>
+
+        <script>
+            const formulario = document.getElementById("forms");
+            const btnSubmit = document.getElementById("btnSubmit");
+
+            formulario.addEventListener("submit", (e) => {
+
+                let messages = [];
+
+                let patTurno = document.getElementById("ticket_number").value.trim();
+                let expTurno = /^[a-zA-Z]{4}(\d{6})(\d{8})?$/;
+
+                if (patTurno == "") {
+                    messages.push("Turno Faltante")
+                } else if (!expTurno.test(patTurno)) {
+                    messages.push("Turno Invalido")
+                }
+
+                let patCURP = document.getElementById("lCurp").value.trim();
+                let expCURP = /^[a-zA-Z]{4}(\d{6})([a-zA-Z]{6})(([a-zA-Z0-9]){2})?$/;
+
+                if (patCURP == "") {
+                    messages.push("CURP Faltante")
+                } else if (!expCURP.test(patCURP)) {
+                    messages.push("CURP Invalida")
+                }
+
+                if (messages.length > 0) {
+                    Swal.fire({
+                        icon: "info",
+                        title: "Error en campos",
+                        text: messages.join(" --- "),
+                        footer: "Complete o verifique los campos mencionados",
+                    });
+                    e.preventDefault();
+                }
+            })
+        </script>
     </div>
 </body>
 

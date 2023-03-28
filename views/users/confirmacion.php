@@ -50,7 +50,9 @@ if ($exito) {
         print("Registrado por " . $resultado->getNOMBRE_USUARIO())
         ?>
 
+        <br>
         <input type="checkbox" id="mostrar_area" name="mostrar_area" onchange="mostrarOcultarArea()">Editar<br>
+        <br>
 
         <div id="area" style="display: none;">
             <form action="" method="post">
