@@ -54,17 +54,17 @@ if (!isset($_SESSION['id'])) {
 </style>
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-        <a class="navbar-brand" style="list-style: none; margin-left:80px" href="#">TICKET</a>
+        <a class="navbar-brand" style="list-style: none; margin-left:80px" href="../../index.php">TICKET</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="../admin/admin/index.php">Inicio</a>
+                    <a class="nav-link" href="../admin/index.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../admin/admin/ticket_atention.php">Atencion a Ticket</a>
+                    <a class="nav-link" href="../admin/ticket_atention.php">Atencion a Ticket</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -72,7 +72,7 @@ if (!isset($_SESSION['id'])) {
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../admin/crud_alumnos.php">Alumnos</a></li>
-                        <li><a class="dropdown-item" href="../admin/crud_usuarios.php">Usuarios</a></li>
+                        <!-- <li><a class="dropdown-item" href="../admin/crud_usuarios.php">Usuarios</a></li> -->
                         <li><a class="dropdown-item" href="../admin/crud_niveles.php">Niveles</a></li>
                         <li><a class="dropdown-item" href="../admin/crud_municipios.php">Municipios</a></li>
                         <li><a class="dropdown-item" href="../admin/crud_asuntos.php">Asuntos</a></li>
