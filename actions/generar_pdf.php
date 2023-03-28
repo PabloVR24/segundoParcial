@@ -7,6 +7,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $curp = $_POST['lcurp'];
     $obj_alumno = new catalogo_alumno_dal;
     $res_alumno = $obj_alumno->datos_por_id($curp);
+
+    $create_id = $_POST['create_id'];
+    $obj_ticket = new catalogo_ticket_dal;
+    $res_ticket = $obj_ticket->datos_por_id($create_id);
 }
 
 if (file_exists("../FPDF/phpqrcode/qrlib.php")) {
@@ -51,12 +55,13 @@ class PDF extends FPDF
             $curp = $_POST['lcurp'];
             $obj_alumno = new catalogo_alumno_dal;
             $res_alumno = $obj_alumno->datos_por_id($curp);
-            //$obj_ticket = new catalogo_ticket_dal;
-            //$res_ticket = $obj_ticket->datos_por_id($curp);
+            $create_id = $_POST['create_id'];
+            $obj_ticket = new catalogo_ticket_dal;
+            $res_ticket = $obj_ticket->datos_por_id($create_id);
         }
 
 
-        
+
         $this->SetFont('Arial', '', 12);
         $this->Cell(40, 10, 'Nombre: ' . $res_alumno->getNOMBRE() . " " . $res_alumno->getAPELLIDO_PAT() . " " . $res_alumno->getAPELLIDO_MAT());
         $this->Ln(7);
@@ -64,8 +69,7 @@ class PDF extends FPDF
         $this->Ln(7);
         $this->Cell(40, 10, 'Telefono: ' . " " . $res_alumno->getTELEFONO());
         $this->Ln(7);
-        //$this->Cell(40, 10, 'Hola ' . $res_alumno->getNOMBRE() . " su ticket indica que su turno es el:  " . $res_ticket->getFECHA());
-
+        $this->Cell(40, 10, 'Hola ' . $res_alumno->getNOMBRE() . " su ticket indica que su turno es el:  " . $res_ticket->getFECHA());
     }
 }
 

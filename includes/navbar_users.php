@@ -2,9 +2,16 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 
 <style>
-
     .navbar {
-        background-color: blueviolet;
+        background-color: 1c121f;
+        color: white;
+    }
+
+    .navbar-brand {
+        color: white;
+    }
+
+    .nav-link {
         color: white;
     }
 </style>
@@ -18,10 +25,10 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="''">Registro</a>
+                    <a class="nav-link" aria-current="page" href="http://localhost\Practica 2\views\users\search.php">Registro</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://localhost\Practica 2\views\users\search.php">Busqueda</a>
+                    <a class="nav-link" href="http://localhost\Practica 2\views\users\index.php">Busqueda</a>
                 </li>
         </div>
     </div>
