@@ -32,8 +32,8 @@ class PDF extends FPDF
         if ($this->PageNo() == 1) {
             $this->Image('../src/images/frame.png', 0, 0, 210);
             $this->Ln(30);
-            $this->SetFont('Arial', 'B', 25);
-            $this->Cell(0, 20, 'Ticket de Turno', 0, 1, 'C');
+            $this->SetFont('Times', 'B', 30);
+            $this->Cell(0, 20, 'TICKET DE TURNO', 0, 1, 'C');
         }
     }
 
@@ -43,7 +43,7 @@ class PDF extends FPDF
             $curp = $_POST['lcurp'];
         }
 
-        $this->Image('../FPDF/phpqrcode/qrcodes/' . $curp . '.png', 80, 100, 50, 50);
+        $this->Image('../FPDF/phpqrcode/qrcodes/' . $curp . '.png', 66, 190, 80, 80);
         $this->SetY(-15);
         $this->SetFont('Arial', 'I', 8);
         $this->Cell(0, 10, 'Pagina ' . $this->PageNo(), 0, 0, 'C');
@@ -60,16 +60,45 @@ class PDF extends FPDF
             $res_ticket = $obj_ticket->datos_por_id($create_id);
         }
 
+        $this->Ln(8);
+
+        $this->SetFont('Arial', 'B', 20);
+        $this->Cell(50, 10, '   Nombre:');
+        $this->SetFont('Courier', '', 20);
+        $this->Cell(40, 10, $res_alumno->getNOMBRE() . " " . $res_alumno->getAPELLIDO_PAT() . " " . $res_alumno->getAPELLIDO_MAT());
+        $this->Ln(12);
+
+        $this->SetFont('Arial', 'B', 20);
+        $this->Cell(50, 10, '   Telefono:');
+        $this->SetFont('Courier', '', 20);
+        $this->Cell(40, 10, $res_alumno->getTELEFONO());
+        $this->Ln(12);
+
+        $this->SetFont('Arial', 'B', 20);
+        $this->Cell(50, 10, '   Correo:');
+        $this->SetFont('Courier', '', 20);
+        $this->Cell(40, 10, $res_alumno->getEMAIL());
+        $this->Ln(28);  
+        $this->Line(8,110,202,110);  
+
+        $this->SetFont('Courier', 'B', 22);
+        $this->Cell(5, 15, '', 0, 0, "C");
+        $this->Cell(90, 15, 'TURNO:', 1, 0, "C");
+        $this->Cell(90, 15, 'FECHA:', 1, 0, "C");
+        $this->Cell(5, 15, '', 0, 0, "C");
+        $this->SetFont('Courier', '', 25);
+        $this->Ln(15);
+        $this->Cell(5, 15, '', 0, 0, "C");
+        $this->Cell(90, 20, $res_ticket->getTURNO(), 1, 0, "C");
+        $this->Cell(90, 20, $res_ticket->getFECHA(), 1, 0, "C");
+        $this->Cell(5, 15, '', 0, 0, "C");
+        $this->Ln(30);
+
+        $this->Cell(5, 15, '', 0, 0, "C");
+        $this->Cell(180, 15, 'CURP POR CODIGO QR:', 1, 0, "C");
+        $this->Cell(5, 15, '', 0, 0, "C");
 
 
-        $this->SetFont('Arial', '', 12);
-        $this->Cell(40, 10, 'Nombre: ' . $res_alumno->getNOMBRE() . " " . $res_alumno->getAPELLIDO_PAT() . " " . $res_alumno->getAPELLIDO_MAT());
-        $this->Ln(7);
-        $this->Cell(40, 10, 'Correo electronico: ' . " " . $res_alumno->getEMAIL());
-        $this->Ln(7);
-        $this->Cell(40, 10, 'Telefono: ' . " " . $res_alumno->getTELEFONO());
-        $this->Ln(7);
-        $this->Cell(40, 10, 'Hola ' . $res_alumno->getNOMBRE() . " su ticket indica que su turno es el:  " . $res_ticket->getFECHA());
     }
 }
 
