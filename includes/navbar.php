@@ -61,22 +61,22 @@ if (!isset($_SESSION['id'])) {
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="http://localhost\Practica 2\views\admin\index.php">Inicio</a>
+                    <a class="nav-link" href="../admin/admin/index.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://localhost\Practica 2\views\admin\ticket_atention.php">Atencion a Ticket</a>
+                    <a class="nav-link" href="../admin/admin/ticket_atention.php">Atencion a Ticket</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Catalogos
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="http://localhost\Practica 2\views\admin\crud_alumnos.php">Alumnos</a></li>
-                        <li><a class="dropdown-item" href="http://localhost\Practica 2\views\admin\crud_usuarios.php">Usuarios</a></li>
-                        <li><a class="dropdown-item" href="http://localhost\Practica 2\views\admin\crud_niveles.php">Niveles</a></li>
-                        <li><a class="dropdown-item" href="http://localhost\Practica 2\views\admin\crud_municipios.php">Municipios</a></li>
-                        <li><a class="dropdown-item" href="http://localhost\Practica 2\views\admin\crud_asuntos.php">Asuntos</a></li>
-                        <li><a class="dropdown-item" href="http://localhost\Practica 2\views\admin\crud_ticket.php">TICKET</a></li>
+                        <li><a class="dropdown-item" href="../admin/crud_alumnos.php">Alumnos</a></li>
+                        <li><a class="dropdown-item" href="../admin/crud_usuarios.php">Usuarios</a></li>
+                        <li><a class="dropdown-item" href="../admin/crud_niveles.php">Niveles</a></li>
+                        <li><a class="dropdown-item" href="../admin/crud_municipios.php">Municipios</a></li>
+                        <li><a class="dropdown-item" href="../admin/crud_asuntos.php">Asuntos</a></li>
+                        <li><a class="dropdown-item" href="../admin/crud_ticket.php">TICKET</a></li>
                     </ul>
                 </li>
             </ul>
@@ -85,7 +85,7 @@ if (!isset($_SESSION['id'])) {
                     <?php echo $nombre ?>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item close-sesion" href="http://localhost\Practica 2\includes\logout.php">Cerrar Sesión</a></li>
+                    <li><a class="dropdown-item close-sesion" href="../includes/logout.php">Cerrar Sesión</a></li>
                 </ul>
             </li>
         </div>
