@@ -1,6 +1,6 @@
 <?php
 include(__DIR__ . '/../../includes/navbar.php');
-$url = "http://localhost:3000/api/municipios";
+$url = "http://localhost:3000/api/asuntos";
 $response = file_get_contents($url);
 $datos = json_decode($response, true);
 ?>
@@ -10,7 +10,7 @@ $datos = json_decode($response, true);
 
 <head>
     <meta charset="UTF-8">
-    <title>CRUD - MUNICIPIOS</title>
+    <title>CRUD - ASUNTOS</title>
 </head>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="../../css/styles-cruds.css">
@@ -29,7 +29,7 @@ $datos = json_decode($response, true);
         <div class="CRUD">
             <form>
                 <div class="form-gs">
-                    <h3>Catalogo: Municipios</h3>
+                    <h3>Catalogo: Asuntos</h3>
                     <label for="curp">CURP:</label>
                     <input class="controls" type="text" id="curp" name="curp">
 
@@ -49,18 +49,18 @@ $datos = json_decode($response, true);
             <table id="alumnosTable" class="display">
                 <thead>
                     <tr>
-                        <th>ID_MUNICIPIO</th>
-                        <th>NOMBRE_MUNICIPIO</th>
+                        <th>ID_ASUNTO</th>
+                        <th>NOMBRE_ASUNTO</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <?php foreach ($datos as $municipio) { ?>
+                        <?php foreach ($datos as $asunto) { ?>
                             <td>
-                                <?php echo $municipio['ID_MUNICIPIO']; ?>
+                                <?php echo $asunto['ID_ASUNTO']; ?>
                             </td>
                             <td>
-                                <?php echo $municipio['NOMBRE_MUNICIPIO']; ?>
+                                <?php echo $asunto['NOMBRE_ASUNTO']; ?>
                             </td>
                     </tr>
                 <?php } ?>
@@ -71,16 +71,16 @@ $datos = json_decode($response, true);
 
     <script>
         async function obtenerRegistro() {
-            const id_municipio = document.getElementById("curp").value;
-            const nombre_municipio = document.getElementById("nombre");
+            const id_asunto = document.getElementById("curp").value;
+            const nombre_asunto = document.getElementById("nombre");
 
             try {
-                const response = await fetch(`http://localhost:3000/api/municipios/"${id_municipio}"`);
+                const response = await fetch(`http://localhost:3000/api/asuntos/"${id_asunto}"`);
                 if (response.ok) {
                     const data = await response.json();
                     if (data.length > 0) {
-                        data.forEach((municipio) => {
-                            nombre_municipio.value = `${municipio.NOMBRE_MUNICIPIO}`;
+                        data.forEach((asunto) => {
+                            nombre_asunto.value = `${asunto.NOMBRE_ASUNTO}`;
                         });
                     } else {
                         throw new Error('Registro no encontrado');
@@ -99,21 +99,21 @@ $datos = json_decode($response, true);
         }
 
         async function crearRegistro() {
-            const id_municipio = document.getElementById("curp").value;
-            const nombre_municipio = document.getElementById("nombre").value;
+            const id_asunto = document.getElementById("curp").value;
+            const nombre_asunto = document.getElementById("nombre").value;
 
             try {
-                const response = await fetch(`http://localhost:3000/api/municipios/"${id_municipio}"`);
+                const response = await fetch(`http://localhost:3000/api/asuntos/"${id_asunto}"`);
                 if (response.ok) {
                     const data = await response.json();
                     if (data.length > 0) {
                         throw new Error('Registro existente');
                     } else {
                         const data = {
-                            NOMBRE_MUNICIPIO: nombre_municipio,
+                            NOMBRE_ASUNTO: nombre_asunto,
                         };
 
-                        fetch("http://localhost:3000/api/municipios", {
+                        fetch("http://localhost:3000/api/asuntos", {
                                 method: "POST",
                                 headers: {
                                     "Content-Type": "application/json"
@@ -142,14 +142,14 @@ $datos = json_decode($response, true);
         }
 
         function actualizarRegistro() {
-            const nombre_municipio = document.getElementById("nombre").value;
-            const id_municipio = document.getElementById("curp").value;
+            const nombre_asunto = document.getElementById("nombre").value;
+            const id_asunto = document.getElementById("curp").value;
 
             const data = {
-                NOMBRE_MUNICIPIO: nombre_municipio,
+                NOMBRE_ASUNTO: nombre_asunto,
             };
 
-            fetch(`http://localhost:3000/api/municipios/"${id_municipio}" `)
+            fetch(`http://localhost:3000/api/asuntos/"${id_asunto}" `)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Error al buscar el registro');
@@ -160,7 +160,7 @@ $datos = json_decode($response, true);
                     if (json.length === 0) {
                         throw new Error('Registro no encontrado');
                     }
-                    return fetch(`http://localhost:3000/api/municipios/"${id_municipio}"`, {
+                    return fetch(`http://localhost:3000/api/asuntos/"${id_asunto}"`, {
                         method: "PUT",
                         headers: {
                             "Content-Type": "application/json"
@@ -189,14 +189,14 @@ $datos = json_decode($response, true);
         }
 
         async function eliminarRegistro() {
-            const id_municipio = parseInt(document.getElementById("curp").value);
+            const id_asunto = parseInt(document.getElementById("curp").value);
 
             try {
-                const response = await fetch(`http://localhost:3000/api/municipios/${id_municipio}`);
+                const response = await fetch(`http://localhost:3000/api/asuntos/${id_asunto}`);
                 if (response.ok) {
                     const data = await response.json();
                     if (data.length > 0) {
-                        const eliminar = await fetch(`http://localhost:3000/api/municipios/${id_municipio}`, {
+                        const eliminar = await fetch(`http://localhost:3000/api/asuntos/${id_asunto}`, {
                             method: 'DELETE'
                         });
                         if (eliminar.ok) {
