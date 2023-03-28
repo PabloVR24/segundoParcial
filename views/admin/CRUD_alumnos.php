@@ -17,7 +17,7 @@ $datos = json_decode($response, true);
 <link href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.13.4/r-2.4.1/datatables.min.css" rel="stylesheet" />
 <script src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.13.4/r-2.4.1/datatables.min.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#alumnosTable').DataTable({
             responsive: true
         });
@@ -54,7 +54,8 @@ $datos = json_decode($response, true);
 
                     <div class="btns">
                         <button id="get" class="buttons" type="button" onclick="obtenerRegistro()">Obtener</button>
-                        <button id="update" class="buttons" type="button" onclick="actualizarRegistro()">Actualizar</button>
+                        <button id="update" class="buttons" type="button"
+                            onclick="actualizarRegistro()">Actualizar</button>
                         <button id="create" class="buttons" type="button" onclick="crearRegistro()">Crear</button>
                         <button id="delete" class="buttons" type="button" onclick="eliminarRegistro()">Eliminar</button>
                     </div>
@@ -98,8 +99,8 @@ $datos = json_decode($response, true);
                             <td>
                                 <?php echo $alumno['EMAIL']; ?>
                             </td>
-                    </tr>
-                <?php } ?>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
@@ -171,12 +172,12 @@ $datos = json_decode($response, true);
                         };
 
                         fetch("http://localhost:3000/api/alumnos", {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json"
-                                },
-                                body: JSON.stringify(data)
-                            })
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(data)
+                        })
                             .then(response => {
                                 Swal.fire({
                                     icon: 'success',
