@@ -508,8 +508,8 @@ app.get("/api/tickets", (req, res) => {
 });
 
 app.get("/api/tickets/:id_ticket", (req, res) => {
-    const id = req.params.id_nivel;
-    db.query(`SELECT * FROM niveles WHERE id_nivel = ${id}`, (err, result) => {
+    const id = req.params.id_ticket;
+    db.query(`SELECT * FROM ticket WHERE id_ticket = ${id}`, (err, result) => {
         if (err) {
             console.log(err);
             throw err;
@@ -518,66 +518,61 @@ app.get("/api/tickets/:id_ticket", (req, res) => {
     });
 });
 
-app.post("/api/niveles", (req, res) => {
-    const nombre_nivel = req.body.NOMBRE_NIVEL;
+app.post("/api/tickets", (req, res) => {
+    const id_ticket = req.body.ID_TICKET;
+    const nombre_usuario = req.body.NOMBRE_USUARIO;
+    const curp = req.body.CURP;
+    const fecha = req.body.FECHA;
+    const id_asunto = req.body.ID_ASUNTO;
+    const id_nivel = req.body.ID_NIVEL;
+    const id_municipio = req.body.ID_MUNICIPIO;
+    const estatus = req.body.ESTATUS;
 
     db.query(
-        `INSERT INTO niveles (id_nivel, NOMBRE_NIVEL) VALUES (NULL, '${nombre_nivel}')`,
+        `INSERT INTO ticket (ID_TICKET, NOMBRE_USUARIO, CURP, FECHA, ID_ASUNTO, ID_NIVEL, ID_MUNICIPIO, ESTATUS) VALUES ('${id_ticket}', '${nombre_usuario}' , '${curp}', '${fecha}', '${id_asunto}', '${id_nivel}', '${id_municipio}' , '${estatus}')`,
         (err, result) => {
             if (err) {
                 console.log(err);
                 throw err;
             }
-            res.send("Nivel agregado con éxito");
+            res.send("Ticket agregado con éxito");
         }
     );
 });
 
-app.put("/api/niveles/:id_nivel", (req, res) => {
-    const id_nivel = req.params.id_nivel;
-    const nombre_nivel = req.body.NOMBRE_NIVEL;
+app.put("/api/tickets/:id_ticket", (req, res) => {
+    const id_ticket = req.params.id_ticket;
+    const nombre_usuario = req.body.NOMBRE_USUARIO;
+    const curp = req.body.CURP;
+    const fecha = req.body.FECHA;
+    const id_asunto = req.body.ID_ASUNTO;
+    const id_nivel = req.body.ID_NIVEL;
+    const id_municipio = req.body.ID_MUNICIPIO;
+    const estatus = req.body.ESTATUS;
+
     db.query(
-        `UPDATE niveles SET nombre_nivel = '${nombre_nivel}' WHERE id_nivel = ${id_nivel}`,
+        `UPDATE ticket SET nombre_usuario = '${nombre_usuario}', curp = '${curp}', fecha = '${fecha}', id_asunto = '${id_asunto}', id_nivel = '${id_nivel}', id_municipio = '${id_municipio}', estatus = '${estatus}' WHERE id_ticket = ${id_ticket}`,
         (err, result) => {
             if (err) {
                 console.log(err);
                 throw err;
             }
-            res.send("Nivel actualizado con éxito");
+            res.send("Ticket actualizado con éxito");
         }
     );
 });
 
-app.delete("/api/niveles/:id", (req, res) => {
-    const id = req.params.id;
+app.delete("/api/tickets/:id_ticket", (req, res) => {
+    const id = req.params.id_ticket;
     db.query(
-        `SELECT COUNT(*) AS count FROM ticket WHERE id_nivel = ${id}`,
+        `DELETE FROM ticket WHERE id_ticket = ${id}`,
         (err, result) => {
             if (err) {
                 console.log(err);
-                res.status(500).send("Error al verificar referencias");
+                res.status(500).send("Error al eliminar ticket");
             } else {
-                const count = result[0].count;
-                if (count > 0) {
-                    res
-                        .status(500)
-                        .send(
-                            "No se puede eliminar el nivel porque tiene referencias en la tabla ticket"
-                        );
-                } else {
-                    db.query(
-                        `DELETE FROM niveles WHERE id_nivel = ${id}`,
-                        (err, result) => {
-                            if (err) {
-                                console.log(err);
-                                res.status(500).send("Error al eliminar alumno");
-                            } else {
-                                console.log(`Municipio eliminado con el id: ${id}`);
-                                res.status(200).send("Municipio eliminado correctamente");
-                            }
-                        }
-                    );
-                }
+                console.log(`Ticket eliminado con el CURP: ${id}`);
+                res.status(200).send("Ticket eliminado correctamente");
             }
         }
     );
