@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     } else {
         echo '<script>alert("REGISTRO NO EXISTENTE")</script>';
         sleep(5);
-        header("Location: index.php");
+        header("Location: localhost\Practica 2\views\admin\login.php");
         exit();
     }
 }

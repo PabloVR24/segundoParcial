@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
         if ($result_exis == 1) {
             session_start();
             $_SESSION['id'] = $id;
-            header("Location: ../users/index.php");
+            header("Location: ../admin/index.php");
             exit();
         } else {
             echo "<script>alert('El usuario o la contraseña son incorrectos')</script>";

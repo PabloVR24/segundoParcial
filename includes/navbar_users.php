@@ -3,8 +3,9 @@
 
 <style>
     .navbar {
-        background-color: 1c121f;
+        background-color: #1c121f;
         color: white;
+        height: 80px;
     }
 
     .navbar-brand {
@@ -12,6 +13,11 @@
     }
 
     .nav-link {
+        color: white;
+    }
+
+    .nav-link:hover {
+        background-color: #7D5A8C;
         color: white;
     }
 </style>
@@ -25,10 +31,10 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="http://localhost\Practica 2\views\users\search.php">Registro</a>
+                    <a class="nav-link" aria-current="page" href="http://localhost\Practica 2\views\users\index.php">Registro</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://localhost\Practica 2\views\users\index.php">Busqueda</a>
+                    <a class="nav-link" href="http://localhost\Practica 2\views\users\search.php">Busqueda</a>
                 </li>
         </div>
     </div>
