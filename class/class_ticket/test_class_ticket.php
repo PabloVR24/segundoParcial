@@ -44,14 +44,19 @@ if ($result_upd == 1) {
     echo "<h2 style = 'color:green'>ACTUALIZADO CORRECTAMENTE</h2>";
 } else {
     echo "<h2 style = 'color:red'>NO SE ACTUALIZO TICKET</h2>";
-    echo "FECHA value: " . $obj_upd->getID_TICKET() . "\n";
 }
 
-//existe curso
-echo '<br>';
-$result_exis = $obj_ticket->existe_ticket_municipio("3");
-echo $result_exis;
-
-echo '<br>';
-$result_exis = $obj_ticket->existe_ticket_turno("1", "varp151202hcllnb05");
-echo $result_exis;
+$resultado3 = $obj_ticket->existe_ticket_turno_curp("1","VARP151202HCLLNB05");
+if ($resultado3 == null) {
+    echo "<h2 style = 'color:red'>NO SE ENCONTRO REGISTRO</h2>";
+} else if ($resultado3 == 1){
+    echo '<pre>';
+    print_r($resultado3);
+    echo '</pre>';
+    echo 'NOMAS ES UNO';
+} else{
+    echo 'ES MAS DE UNO';
+    echo '<pre>';
+    print_r($resultado3);
+    echo '</pre>';
+}

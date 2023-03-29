@@ -30,10 +30,10 @@ $datos = json_decode($response, true);
             <form>
                 <div class="form-gs">
                     <h3>Catalogo: Municipios</h3>
-                    <label for="curp">CURP:</label>
+                    <label for="curp">ID_MUNICIPIO:</label>
                     <input class="controls" type="text" id="curp" name="curp">
 
-                    <label for="nombre">Nombre:</label>
+                    <label for="nombre">NOMBRE_MUNICIPIO:</label>
                     <input class="controls" type="text" id="nombre" name="nombre">
 
                     <div class="btns">

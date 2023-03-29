@@ -181,4 +181,40 @@ class catalogo_ticket_dal extends class_db
         $cuantos = $renglon[0];
         return $cuantos;
     }
+
+    function existe_ticket_turno_curp($turno, $lcurp)
+    {
+
+        $turno = $this->db_conn->real_escape_string($turno);
+        $lcurp = $this->db_conn->real_escape_string($lcurp);
+
+        $sql = "SELECT * FROM ticket WHERE TURNO = '$turno' AND CURP = '$lcurp'";
+        $this->set_sql(($sql));
+        $rs = mysqli_query($this->db_conn, $this->db_query)
+            or die(mysqli_error($this->db_conn));
+
+        $total_tickets = mysqli_num_rows($rs);
+        $obj_det = null;
+
+        if ($total_tickets > 0) {
+            $i = 0;
+            while ($renglon = mysqli_fetch_assoc($rs)) {
+                $obj_det = new catalogo_ticket(
+                    $renglon["ID_TICKET"],
+                    $renglon["NOMBRE_USUARIO"],
+                    $renglon["CURP"],
+                    $renglon["FECHA"],
+                    $renglon["ID_ASUNTO"],
+                    $renglon["ID_NIVEL"],
+                    $renglon["ID_MUNICIPIO"],
+                    $renglon["ESTATUS"],
+                    $renglon["TURNO"],
+                );
+                $i++;
+                $lista[$i] = $obj_det;
+                unset($obj_det);
+            }
+            return $lista;
+        }
+    }
 }

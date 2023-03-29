@@ -7,37 +7,12 @@ formulario.addEventListener("submit", (e) => {
     let messages = [];
 
     let expName = /^[a-zA-Z ]{3,30}?$/;
-
     let patFname = document.getElementById("fname").value.trim();
-    let patName = document.getElementById("name").value.trim();
-    let patfirstName = document.getElementById("firstName").value.trim();
-    let patlastName = document.getElementById("lastName").value.trim();
 
-    let variables = ["patFname", "patName", "patfirstName", "patlastName"];
-
-    for (let i = 0; i < variables.length; i++) {
-        if (variables[i] === "patFname") {
-            varia = "Nombre de Quien Realiza";
-            variable = patFname;
-        } else if (variables[i] === "patName") {
-            varia = "Nombre";
-            variable = patName;
-        } else if (variables[i] === "patfirstName") {
-            varia = "Apellido P.";
-            variable = patfirstName;
-        } else if (variables[i] === "patlastName") {
-            varia = "Apellido M.";
-            variable = patlastName;
-        }
-        validarTexto(variable, varia);
-    }
-
-    function validarTexto(variable, msg) {
-        if (variable === "") {
-            messages.push("FALTANTE: " + msg);
-        } else if (!expName.test(variable)) {
-            messages.push("INVALIDO: " + msg);
-        }
+    if (patFname == "") {
+        messages.push("FALTANTE: Nombre");
+    } else if (!expName.test(patFname)) {
+        messages.push("INVALIDO: Nombre ");
     }
 
     let patCURP = document.getElementById("lCurp").value.trim();
@@ -89,33 +64,6 @@ formulario.addEventListener("submit", (e) => {
         }
         return age;
     }
-
-    let patTel = document.getElementById("tel").value.trim();
-    let expTel = /^(\d{10})$/;
-
-    if (!expTel.test(patTel)) {
-        messages.push("INVALIDO: Telefono");
-    } else if (patTel.length == 0) {
-        messages.push("FALTANTE: Telefono");
-    }
-
-    let patCel = document.getElementById("cel").value.trim();
-
-    if (!expTel.test(patCel)) {
-        messages.push("INVALIDO: Celular");
-    } else if (patCel.length == 0) {
-        messages.push("FALTANTE: Celular");
-    }
-
-    let patMail = document.getElementById("mail").value.trim();
-    let expMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-    if (!expMail.test(patMail)) {
-        messages.push("INVALIDO: email");
-    } else if (patMail.length == 0) {
-        messages.push("FALTANTE: email");
-    }
-
     let patNivel = document.getElementById("mes").value.trim();
 
     if (patNivel.length == 0) {
@@ -137,8 +85,6 @@ formulario.addEventListener("submit", (e) => {
     if (patFecha.length == 0) {
         messages.push("FALTANTE: Fecha");
     }
-
-
 
     if (messages.length > 0) {
         Swal.fire({

@@ -51,13 +51,12 @@ include(__DIR__ . "../../../includes/navbar_users.php");
     }
 
     .container {
-        width: 70%;
+        width: 100%;
         align-items: center;
         text-align: center;
         color: white;
         background-color: #7D5A8C;
-        margin-top: 100px;
-        height: 500px;
+        height: 100%;
         padding-top: 50px;
         padding-left: 100px;
         padding-right: 100px;
@@ -106,11 +105,11 @@ include(__DIR__ . "../../../includes/navbar_users.php");
             <h1>BUSQUEDA DE TICKET</h1>
             <p>Ingresa por favor los siguientes datos</p>
             <div class="row">
-                <div class="col">
+                <div class="col-4">
                     <label class="form-label" for="ticket_number">Numero de Turno:</label>
-                    <input class="form-control" type="text" id="ticket_number" name="ticket_number" placeholder="20 digitos del numero">
+                    <input class="form-control" type="text" id="ticket_number" name="ticket_number" placeholder="Digitos del numero">
                 </div>
-                <div class="col">
+                <div class="col-8">
                     <label class="form-label" for="lCurp">CURP</label>
                     <input class="form-control" type="text" id="lCurp" name="lCurp" placeholder="CURP">
 
@@ -118,6 +117,24 @@ include(__DIR__ . "../../../includes/navbar_users.php");
             </div>
             <input class="submit" id="btnSubmit" type="submit" name="submit" value="Enviar">
         </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID_TICKET</th>
+                    <th scope="col">NOMBRE_REGISTRO</th>
+                    <th scope="col">CURP</th>
+                    <th scope="col">FECHA CITA</th>
+                    <th scope="col">ASUNTO</th>
+                    <th scope="col">NIVEL</th>
+                    <th scope="col">MUNICIPIO</th>
+                    <th scope="col">ACCION</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
 
         <script>
             const formulario = document.getElementById("forms");
@@ -157,6 +174,8 @@ include(__DIR__ . "../../../includes/navbar_users.php");
             })
         </script>
     </div>
+
+
 </body>
 
 </html>
