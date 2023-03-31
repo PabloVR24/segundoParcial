@@ -38,7 +38,7 @@ if ($result_del == 1) {
 }
 
 // UPDATE
-$obj_upd = new catalogo_ticket("id_ticket3", "2023-12-27");
+$obj_upd = new catalogo_ticket("id_ticket3", "2025-12-27", "7", "3", "2");
 $result_upd = $obj_ticket->actualizar_ticket($obj_upd);
 if ($result_upd == 1) {
     echo "<h2 style = 'color:green'>ACTUALIZADO CORRECTAMENTE</h2>";
@@ -46,17 +46,13 @@ if ($result_upd == 1) {
     echo "<h2 style = 'color:red'>NO SE ACTUALIZO TICKET</h2>";
 }
 
-$resultado3 = $obj_ticket->existe_ticket_turno_curp("1","VARP151202HCLLNB05");
-if ($resultado3 == null) {
-    echo "<h2 style = 'color:red'>NO SE ENCONTRO REGISTRO</h2>";
-} else if ($resultado3 == 1){
-    echo '<pre>';
-    print_r($resultado3);
-    echo '</pre>';
-    echo 'NOMAS ES UNO';
-} else{
-    echo 'ES MAS DE UNO';
-    echo '<pre>';
-    print_r($resultado3);
-    echo '</pre>';
-}
+// $resultado3 = $obj_ticket->existe_ticket_turno("1", "VARP151202HCLLNB05");
+// if ($resultado3 == null) {
+//     echo "<h2 style = 'color:red'>NO SE ENCONTRO REGISTRO</h2>";
+// } else if ($resultado3 == 1) {
+//     echo '<pre>';
+//     print_r($resultado3);
+//     echo '</pre>';
+// } else {
+//     print_r($resultado3);
+// }

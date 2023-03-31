@@ -190,6 +190,7 @@ app.put("/api/usuarios/:nombre_usuario", (req, res) => {
     );
 });
 
+
 app.delete("/api/usuarios/:NOMBRE_USUARIO", (req, res) => {
     const id = req.params.NOMBRE_USUARIO;
     db.query(
@@ -552,6 +553,22 @@ app.put("/api/tickets/:id_ticket", (req, res) => {
 
     db.query(
         `UPDATE ticket SET nombre_usuario = '${nombre_usuario}', curp = '${curp}', fecha = '${fecha}', id_asunto = '${id_asunto}', id_nivel = '${id_nivel}', id_municipio = '${id_municipio}', estatus = '${estatus}' WHERE id_ticket = ${id_ticket}`,
+        (err, result) => {
+            if (err) {
+                console.log(err);
+                throw err;
+            }
+            res.send("Ticket actualizado con éxito");
+        }
+    );
+});
+
+app.put("/api/ticketestatus/:id_ticket", (req, res) => {
+    const id_ticket = req.params.id_ticket;
+    const estatus = req.body.ESTATUS;
+
+    db.query(
+        `UPDATE ticket SET estatus = '${estatus}' WHERE id_ticket = ${id_ticket}`,
         (err, result) => {
             if (err) {
                 console.log(err);

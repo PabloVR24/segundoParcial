@@ -1,5 +1,4 @@
 @import url('https://fonts.cdnfonts.com/css/circular-std');
-
 * {
     margin: 0;
     padding: 0;
@@ -7,14 +6,10 @@
     font-family: 'Circular Std', sans-serif;
 }
 
-
 body {
     color: white;
     background-color: #011627;
-    background: radial-gradient(circle, transparent 20%, #011627 20%, #011627 80%, transparent 80%, transparent),
-        radial-gradient(circle, transparent 20%, #011627 20%, #011627 80%, transparent 80%, transparent) 15px 15px,
-        linear-gradient(#b89cd7 1.2000000000000002px, transparent 1.2000000000000002px) 0 -0.6000000000000001px,
-        linear-gradient(90deg, #b89cd7 1.2000000000000002px, #011627 1.2000000000000002px) -0.6000000000000001px 0;
+    background: radial-gradient(circle, transparent 20%, #011627 20%, #011627 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #011627 20%, #011627 80%, transparent 80%, transparent) 15px 15px, linear-gradient(#b89cd7 1.2000000000000002px, transparent 1.2000000000000002px) 0 -0.6000000000000001px, linear-gradient(90deg, #b89cd7 1.2000000000000002px, #011627 1.2000000000000002px) -0.6000000000000001px 0;
     background-size: 150px 150px, 150px 150px, 15px 15px, 15px 15px;
 }
 
@@ -22,11 +17,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
+    margin-top: 200px;
 }
 
 input[type="submit"] {
-    background-color: #a5fd00;
+    background-color: #B8A0D9;
     padding: 10px 20px;
     border-radius: 3px;
     border: none;

@@ -162,4 +162,5 @@ include('../../class/class_nivel/class_nivel_dal.php');
 </body>
 
 <script defer src="../../js/validate.js"></script>
+
 </html>

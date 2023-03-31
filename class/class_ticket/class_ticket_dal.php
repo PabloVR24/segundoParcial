@@ -107,7 +107,10 @@ class catalogo_ticket_dal extends class_db
     function actualizar_ticket($obj)
     {
         $sql = "UPDATE Ticket SET ";
-        $sql .= "FECHA=" . "'" . $obj->getNOMBRE_USUARIO() . "'";
+        $sql .= "FECHA=" . "'" . $obj->getNOMBRE_USUARIO() . "',";
+        $sql .= "ID_ASUNTO=" . "'" . $obj->getCURP() . "',";
+        $sql .= "ID_NIVEL=" . "'" . $obj->getFECHA() . "',";
+        $sql .= "ID_MUNICIPIO=" . "'" . $obj->getID_ASUNTO() . "'";
         $sql .= "WHERE id_ticket= '" . $obj->getID_TICKET() . "'";
 
         $this->set_sql($sql);
@@ -172,7 +175,7 @@ class catalogo_ticket_dal extends class_db
     {
         $ticket_number = $this->db_conn->real_escape_string($ticket_number);
         $lcurp = $this->db_conn->real_escape_string($lcurp);
-        $sql = "SELECT COUNT(*) FROM ticket WHERE ID_TICKET = '$ticket_number' AND CURP = '$lcurp'";
+        $sql = "SELECT COUNT(*) FROM ticket WHERE TURNO = '$ticket_number' AND CURP = '$lcurp'";
         $this->set_sql($sql);
         $rs = mysqli_query($this->db_conn, $this->db_query)
             or die(mysqli_error($this->db_conn));
@@ -184,7 +187,6 @@ class catalogo_ticket_dal extends class_db
 
     function existe_ticket_turno_curp($turno, $lcurp)
     {
-
         $turno = $this->db_conn->real_escape_string($turno);
         $lcurp = $this->db_conn->real_escape_string($lcurp);
 

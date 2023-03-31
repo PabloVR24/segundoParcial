@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $obj_ticket = new catalogo_ticket_dal;
                 $result_exis = $obj_ticket->existe_ticket_municipio("$mes2");
                 $turno = $result_exis + 1;
-                $obj_ins = new catalogo_ticket(strtoupper($create_id), strtoupper($fname), strtoupper($lcurp),  $fecha, $mes, $mes1, $mes2, 'PENDIENTE', $turno);
+                $obj_ins = new catalogo_ticket(strtoupper($create_id), strtoupper($fname), strtoupper($lcurp),  $fecha, $mes1, $mes, $mes2, 'PENDIENTE', $turno);
                 $result_ins = $obj_ticket->inserta_ticket($obj_ins);
                 if ($result_ins == 1) {
                     header("Location: confirmacion.php?exito=1&create_id=$create_id&lcurp=$lcurp");
