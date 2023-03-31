@@ -73,18 +73,11 @@ $datos = json_decode($response, true);
         async function obtenerRegistro() {
             const id_asunto = document.getElementById("curp").value;
             const nombre_asunto = document.getElementById("nombre");
-
             try {
-                const response = await fetch(`http://localhost:4000/api/asuntos/1`);
+                const response = await fetch(`http://localhost:4000/api/asuntos/${id_asunto}`);
                 if (response.ok) {
                     const data = await response.json();
-                    if (data.length > 0) {
-                        data.forEach((asunto) => {
-                            nombre_asunto.value = `${asunto.nombre_asunto}`;
-                        });
-                    } else {
-                        throw new Error('Registro no encontrado');
-                    }
+                    nombre.value = `${data.nombre_asunto}`;
                 } else {
                     throw new Error('Error al buscar el registro');
                 }
@@ -95,42 +88,30 @@ $datos = json_decode($response, true);
                     text: error.message,
                 });
             }
-
         }
 
         async function crearRegistro() {
             const id_asunto = document.getElementById("curp").value;
             const nombre_asunto = document.getElementById("nombre").value;
-
             try {
-                const response = await fetch(`http://localhost:3000/api/asuntos/"${id_asunto}"`);
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.length > 0) {
-                        throw new Error('Registro existente');
-                    } else {
-                        const data = {
-                            NOMBRE_ASUNTO: nombre_asunto,
-                        };
+                const data = {
+                    nombre_asunto: nombre_asunto,
+                };
 
-                        fetch("http://localhost:3000/api/asuntos", {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json"
-                                },
-                                body: JSON.stringify(data)
-                            })
-                            .then(response => {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'CORRECTO',
-                                    text: 'Registro Agregado con Exito',
-                                })
-                            })
-                    }
-                } else {
-                    throw new Error('Error al buscar el registro');
-                }
+                fetch("http://localhost:4000/api/asuntos", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'CORRECTO',
+                            text: 'Registro Agregado con Exito',
+                        })
+                    })
             } catch (error) {
                 Swal.fire({
                     icon: 'error',
@@ -146,29 +127,16 @@ $datos = json_decode($response, true);
             const id_asunto = document.getElementById("curp").value;
 
             const data = {
-                NOMBRE_ASUNTO: nombre_asunto,
+                nombre_asunto: nombre_asunto,
             };
 
-            fetch(`http://localhost:3000/api/asuntos/"${id_asunto}" `)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error al buscar el registro');
-                    }
-                    return response.json();
-                })
-                .then(json => {
-                    if (json.length === 0) {
-                        throw new Error('Registro no encontrado');
-                    }
-                    return fetch(`http://localhost:3000/api/asuntos/"${id_asunto}"`, {
-                        method: "PUT",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(data)
-                    });
-                })
-                .then(response => {
+            fetch(`http://localhost:4000/api/asuntos/${id_asunto}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                }).then(response => {
                     if (response.ok) {
                         Swal.fire({
                             icon: 'success',
@@ -188,33 +156,22 @@ $datos = json_decode($response, true);
                 });
         }
 
-        async function eliminarRegistro() {
-            const id_asunto = parseInt(document.getElementById("curp").value);
 
-            try {
-                const response = await fetch(`http://localhost:3000/api/asuntos/${id_asunto}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    if (data.length > 0) {
-                        const eliminar = await fetch(`http://localhost:3000/api/asuntos/${id_asunto}`, {
-                            method: 'DELETE'
-                        });
-                        if (eliminar.ok) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'CORRECTO',
-                                text: 'Registro Eliminado con Exito',
-                            })
-                        } else {
-                            throw new Error('El registro no pudo ser eliminado')
-                        }
-                    } else if (response.status === 404) {
-                        throw new Error('Registro no existente')
-                    } else {
-                        throw new Error('El registro no pudo ser eliminado')
-                    }
+        async function eliminarRegistro() {
+            const id_asunto = document.getElementById("curp").value;
+            try {   
+                const eliminar = await fetch(`http://localhost:4000/api/asuntos/${id_asunto}`, {
+                    method: 'DELETE'
+                });
+                
+                if (eliminar.ok) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'CORRECTO',
+                        text: 'Registro Eliminado con Exito',
+                    })
                 } else {
-                    throw new Error('Registro no encontrado');
+                    throw new Error('El registro no pudo ser eliminado')
                 }
             } catch (error) {
                 Swal.fire({

@@ -332,7 +332,6 @@ $datos = json_decode($response, true);
                 ID_MUNICIPIO: id_municipio,
                 ESTATUS: estatus
             };
-
             fetch(`http://localhost:3000/api/tickets/"${id_ticket}" `)
                 .then(response => {
                     if (!response.ok) {
