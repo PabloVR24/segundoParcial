@@ -41,7 +41,7 @@ include('../../class/class_alumno/class_alumno_dal.php');
                             <?php
                             foreach ($result_alumnos as $key => $value) {
                             ?>
-                                <option class="opt" value="<?= $value->getCURP() ?>"><?= $value->getNOMBRE() . " - " . $value->getCURP() ?></option>
+                                <option class="opt" value="<?= $value->getCURP() ?>"><?= $value->getNOMBRE() . " " . $value->getAPELLIDO_PAT(). " " . " " . $value->getAPELLIDO_MAT(). " - " . $value->getCURP() ?></option>
                             <?php
                             }
                             ?>

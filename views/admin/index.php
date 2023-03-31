@@ -7,7 +7,7 @@ include(__DIR__ . '/../../class/class_db/class_db.php');
 
 <head>
     <meta charset="utf-8">
-    <title>Dashboard con Charts.js</title>
+    <title>Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <link rel="stylesheet" href="../../css/style_dashboard.css">

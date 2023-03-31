@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const { Sequelize, DataTypes } = require("sequelize");
+const bodyParser = require("body-parser");
 
 const sequelize = new Sequelize("mydb", "root", "", {
     dialect: "mysql",
