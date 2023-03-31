@@ -1,0 +1,46 @@
+body {
+    color: azure;
+    font-family: Arial, sans-serif;
+    background-color: #011627;
+    background-size: 150px 150px, 150px 150px, 15px 15px, 15px 15px;
+    text-align: center; /* Centrar horizontalmente */
+    vertical-align: middle; /* Centrar verticalmente */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    margin: auto;
+    height: 70%;
+    padding-top: 75px;
+}
+
+input{
+    margin-top: 5%;
+}
+
+.TITULO {
+    padding: 10px;
+    width: 30%;
+}
+
+.FILTRO {
+    padding: 10px;
+    display: block;
+    /* Mostrar como flexbox */
+    justify-content: center;
+    /* Centrar horizontalmente */
+    align-items: center;
+    /* Centrar verticalmente */
+}
+
+.GRAFICO {
+    width: 40%;
+    height: 65vh;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+}
