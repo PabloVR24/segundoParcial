@@ -9,7 +9,7 @@ app.use(cors());
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Servidor iniciado en el puerto ${PORT}`);
+    console.log(`Servidor iniciado en el puerto 4000`);
 });
 
 const db = mysql.createConnection({
@@ -563,21 +563,6 @@ app.put("/api/tickets/:id_ticket", (req, res) => {
     );
 });
 
-app.put("git ", (req, res) => {
-    const id_ticket = req.params.id_ticket;
-    const estatus = req.body.ESTATUS;
-
-    db.query(
-        `UPDATE ticket SET estatus = '${estatus}' WHERE id_ticket = ${id_ticket}`,
-        (err, result) => {
-            if (err) {
-                console.log(err);
-                throw err;
-            }
-            res.send("Ticket actualizado con éxito");
-        }
-    );
-});
 
 app.delete("/api/tickets/:id_ticket", (req, res) => {
     const id = req.params.id_ticket;
@@ -593,4 +578,22 @@ app.delete("/api/tickets/:id_ticket", (req, res) => {
             }
         }
     );
+});
+
+//TODO:
+//TODO:
+//TODO:
+//TODO:
+//TODO:
+
+
+app.get("/api/tickets/curp/:curp", (req, res) => {
+    const id = req.params.curp;
+    db.query(`SELECT * FROM ticket WHERE CURP = ${id}`, (err, result) => {
+        if (err) {
+            console.log(err);
+            throw err;
+        }
+        res.send(result);
+    });
 });

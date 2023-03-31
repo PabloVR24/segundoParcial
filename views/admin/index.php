@@ -22,7 +22,7 @@ include(__DIR__ . '/../../class/class_db/class_db.php');
             <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <label for="municipio">Filtrar por municipio:</label>
                 <br>
-                <select id="municipio" name="municipio">
+                <select class="form-control" id="municipio" name="municipio">
                     <option value="">Todos</option>
                     <?php
                     $db = new class_db();
@@ -119,7 +119,7 @@ include(__DIR__ . '/../../class/class_db/class_db.php');
                     $db->close_db();
                     ?>
                 </select>
-                <input type="submit" value="Filtrar">
+                <input class="btn btn-success" type="submit" value="Filtrar">
             </form>
         </div>
         <?php
@@ -149,16 +149,17 @@ include(__DIR__ . '/../../class/class_db/class_db.php');
                         labels: ['Pendientes', 'Resueltos'],
                         datasets: [{
                             data: [<?php
-                            if (!empty($municipio_seleccionado)) {
-                                echo "$pendientes_por_municipio, $resueltos_por_municipio";
-                            } else {
-                                echo "$total_pendientes, $total_resueltos";
-                            }
-                            ?>],
-                            backgroundColor: ['#750000', '#72bae9'],
+                                    if (!empty($municipio_seleccionado)) {
+                                        echo "$pendientes_por_municipio, $resueltos_por_municipio";
+                                    } else {
+                                        echo "$total_pendientes, $total_resueltos";
+                                    }
+                                    ?>],
+                            backgroundColor: ['#7D5A8C', '#7641BF'],
                             borderWidth: 1.5
                         }]
-                    }, options: {
+                    },
+                    options: {
                         maintainAspectRatio: false,
                         responsive: true,
                         title: {
@@ -168,10 +169,12 @@ include(__DIR__ . '/../../class/class_db/class_db.php');
                         plugins: {
                             datalabels: {
                                 color: 'black',
-                                font: { size: 20 },
-                                formatter: function (value, ctx) {
+                                font: {
+                                    size: 20
+                                },
+                                formatter: function(value, ctx) {
                                     var dataset = ctx.chart.data.datasets[0];
-                                    var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
+                                    var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
                                         return previousValue + currentValue;
                                     });
                                     var percentage = Math.floor((value / total) * 100 + 0.5);
@@ -180,7 +183,9 @@ include(__DIR__ . '/../../class/class_db/class_db.php');
                             }
                         },
                         legend: {
-                            labels: { fontColor: 'white' }
+                            labels: {
+                                fontColor: 'white'
+                            }
                         }
                     },
                     plugins: [ChartDataLabels]

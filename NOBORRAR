@@ -1,0 +1,39 @@
+async function obtenerRegistro() {
+            const id_ticket = document.getElementById("id_ticket").value;
+            const nombre_usuario = document.getElementById("nombre");
+            const curp = document.getElementById("curp");
+            const fecha = document.getElementById("fecha");
+            const asunto = document.getElementById("mes1");
+            const nivel = document.getElementById("mes");
+            const municipio = document.getElementById("mes2");
+            const estatus = document.getElementById("estatus");
+
+            try {
+                const response = await fetch(`http://localhost:3000/api/tickets/"${id_ticket}"`);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.length > 0) {
+                        data.forEach((alumno) => {
+                            nombre_usuario.value = `${alumno.NOMBRE_USUARIO}`;
+                            curp.value = `${alumno.CURP}`
+                            fecha.value = `${alumno.FECHA}`
+                            asunto.value = `${alumno.ID_ASUNTO}`;
+                            nivel.value = `${alumno.ID_NIVEL}`;
+                            municipio.value = `${alumno.ID_MUNICIPIO}`;
+                            estatus.value = `${alumno.ESTATUS}`;;
+                        });
+                    } else {
+                        throw new Error('Registro no encontrado');
+                    }
+                } else {
+                    throw new Error('Error al buscar el registro');
+                }
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'ERROR',
+                    text: error.message,
+                });
+            }
+
+        }

@@ -1,3 +1,11 @@
+<style>
+    @import url('https://fonts.cdnfonts.com/css/circular-std');
+    * {
+        font-family: 'Circular Std', sans-serif;
+    }
+</style>
+
+
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
@@ -76,7 +84,6 @@ if (!isset($_SESSION['id'])) {
                         <li><a class="dropdown-item" href="../admin/crud_niveles.php">Niveles</a></li>
                         <li><a class="dropdown-item" href="../admin/crud_municipios.php">Municipios</a></li>
                         <li><a class="dropdown-item" href="../admin/crud_asuntos.php">Asuntos</a></li>
-                        <li><a class="dropdown-item" href="../admin/crud_ticket.php">TICKET</a></li>
                     </ul>
                 </li>
             </ul>
