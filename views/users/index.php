@@ -30,17 +30,23 @@ include('../../class/class_nivel/class_nivel_dal.php');
             <h2>Ticket de Turno</h2>
             <div class="wrapper">
                 <div class="box">
-                    <input class="whiteText" type="text" name="fname" id="fname" value="<?php echo isset($_POST["fname"]) ? $_POST["fname"] : ""; ?>" />
+                    <input class="whiteText" type="text" name="fname" id="fname"
+                        value="<?php echo isset($_POST["fname"]) ? $_POST["fname"] : ""; ?>" />
                     <label for="fname">Nombre completo de quien realizará el trámite:</label>
                     <?php if (!empty($error_fname)) { ?>
-                        <span class="error"><?php echo $error_fname; ?></span>
+                        <span class="error">
+                            <?php echo $error_fname; ?>
+                        </span>
                     <?php } ?>
                 </div>
                 <div class="box">
-                    <input class="whiteText" type="text" name="lCurp" id="lCurp" value="<?php echo isset($_POST["lCurp"]) ? $_POST["lCurp"] : ""; ?>" />
+                    <input class="whiteText" type="text" name="lCurp" id="lCurp"
+                        value="<?php echo isset($_POST["lCurp"]) ? $_POST["lCurp"] : ""; ?>" />
                     <label for="lCurp">CURP:</label>
                     <?php if (!empty($error_lcurp)) { ?>
-                        <span class="error"><?php echo $error_lcurp; ?></span>
+                        <span class="error">
+                            <?php echo $error_lcurp; ?>
+                        </span>
                     <?php } ?>
                 </div>
             </div>
@@ -54,25 +60,28 @@ include('../../class/class_nivel/class_nivel_dal.php');
                     if ($result_nivel == null) {
                         echo '<h2> No se encontraron Niveles </h2>';
                     } else {
-                    ?>
+                        ?>
                         <select name="mes" id="mes" value="<?php echo isset($_POST["mes"]) ? $_POST["mes"] : ""; ?>">
                             <option class="opt" hidden></option>
                             <?php
                             foreach ($result_nivel as $key => $value) {
-                            ?>
-                                <option class="opt" value="<?= $value->getID_NIVEL() ?>"><?= $value->getNOMBRE_NIVEL() ?></option>
-                            <?php
+                                ?>
+                                <option class="opt" value="<?= $value->getID_NIVEL() ?>"><?= $value->getNOMBRE_NIVEL() ?>
+                                </option>
+                                <?php
                             }
                             ?>
                         </select>
-                    <?PHP
+                        <?PHP
                     }
                     ?>
                     <label for="mes">Nivel al que desea ingresar o que ya cursa el alumno:
                     </label>
                     <br>
                     <?php if (!empty($error_mes)) { ?>
-                        <span class="error"><?php echo $error_mes; ?></span>
+                        <span class="error">
+                            <?php echo $error_mes; ?>
+                        </span>
                     <?php } ?>
                 </div>
 
@@ -84,25 +93,28 @@ include('../../class/class_nivel/class_nivel_dal.php');
                     if ($result_asuntos == null) {
                         echo '<h2> No se encontraron Asuntos </h2>';
                     } else {
-                    ?>
+                        ?>
                         <select name="mes1" id="mes1" value="<?php echo isset($_POST["mes1"]) ? $_POST["mes1"] : ""; ?>">
                             <option class="opt" hidden></option>
                             <?php
                             foreach ($result_asuntos as $key => $value) {
-                            ?>
-                                <option class="opt" value="<?= $value->GETID_ASUNTO() ?>"><?= $value->getNOMBRE_ASUNTO() ?></option>
-                            <?php
+                                ?>
+                                <option class="opt" value="<?= $value->GETID_ASUNTO() ?>"><?= $value->getNOMBRE_ASUNTO() ?>
+                                </option>
+                                <?php
                             }
                             ?>
                         </select>
-                    <?PHP
+                        <?PHP
                     }
                     ?>
                     <label for="mes1">Asunto a tratar:
                     </label>
                     <br>
                     <?php if (!empty($error_mes1)) { ?>
-                        <span class="error"><?php echo $error_mes1; ?></span>
+                        <span class="error">
+                            <?php echo $error_mes1; ?>
+                        </span>
                     <?php } ?>
                 </div>
             </div>
@@ -117,18 +129,18 @@ include('../../class/class_nivel/class_nivel_dal.php');
                     if ($result_municipio == null) {
                         echo '<h2> No se encontraron Municipios </h2>';
                     } else {
-                    ?>
+                        ?>
                         <select name="mes2" id="mes2" value="<?php echo isset($_POST["mes2"]) ? $_POST["mes2"] : ""; ?>">
                             <option class="opt" hidden></option>
                             <?php
                             foreach ($result_municipio as $key => $value) {
-                            ?>
+                                ?>
                                 <option class="opt" value="<?= $value->getID_MUNICIPIO() ?>"><?= $value->getNOMBRE_MUNICIPIO() ?></option>
-                            <?php
+                                <?php
                             }
                             ?>
                         </select>
-                    <?PHP
+                        <?PHP
                     }
                     ?>
                     <label for="mes2">Municipio:
@@ -136,17 +148,23 @@ include('../../class/class_nivel/class_nivel_dal.php');
 
                     <br>
                     <?php if (!empty($error_mes2)) { ?>
-                        <span class="error"><?php echo $error_mes2; ?></span>
+                        <span class="error">
+                            <?php echo $error_mes2; ?>
+                        </span>
                     <?php } ?>
                 </div>
 
                 <div class="box">
-                    <input class="whiteText" type="date" id="fecha" name="fecha" value="<?php echo isset($_POST["fecha"]) ? $_POST["fecha"] : ""; ?>" min="2023-01-01" max="2023-12-31">
+                    <input class="whiteText" type="date" id="fecha" name="fecha"
+                        value="<?php echo isset($_POST["fecha"]) ? $_POST["fecha"] : ""; ?>" min="2023-01-01"
+                        max="2023-12-31">
                     <label for="fecha">Fecha de Cita:
                     </label>
                     <br>
                     <?php if (!empty($error_fecha)) { ?>
-                        <span class="error"><?php echo $error_fecha; ?></span>
+                        <span class="error">
+                            <?php echo $error_fecha; ?>
+                        </span>
                     <?php } ?>
                 </div>
 
@@ -155,6 +173,10 @@ include('../../class/class_nivel/class_nivel_dal.php');
             <div class="wrapper">
                 <div class="box">
                     <input type="submit" id="btnSubmit" value="Enviar" />
+                    <br>
+                    <br>
+                    <input id="botonchido" type="button" value="Volver al inicio" onclick="window.location.href='../../index.php'" />
+
                 </div>
             </div>
         </form>

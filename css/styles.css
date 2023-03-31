@@ -57,6 +57,20 @@ body {
     text-align: center;
 }
 
+#botonchido{
+    color: black;
+    background-color: #625d85;
+    width: 300px;
+    height: 70px;
+    border-radius: 30px;
+    font-size: 25px;
+    font-family: 'Mulish', sans-serif;
+    text-align: center;
+    justify-content: center;
+    border: 0;
+    color: black;
+}
+
 .wrapper .box input {
     font-family: 'Mulish', sans-serif;
     width: 100%;
@@ -109,6 +123,11 @@ body {
 }
 
 #btnSubmit:hover {
+    color: white;
+    background-color: #0051a2;
+}
+
+#botonchido:hover {
     color: white;
     background-color: #0051a2;
 }
