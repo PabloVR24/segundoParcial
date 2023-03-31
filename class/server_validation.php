@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
         } else {
-            header("Location: moreData.php?lcurp=$lcurp");
+            header("Location: moreData.php?lcurp=$lcurp&fname=$fname&mes=$mes&mes1=$mes1&mes2=$mes2&fecha=$fecha");
         }
     }
 }

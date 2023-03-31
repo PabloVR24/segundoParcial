@@ -41,13 +41,16 @@
         }
     </style>
 </head>
+<?php
+include('includes/bootstrap.php')
+?>
 
 <body>
     <h1>Ticket de Turno</h1>
     <div class="container">
         <div class="ADMIN">
-            <button onclick="location.href='views/admin/login.php'">ADMIN</button>
-            <button onclick="location.href='views/users/index.php'">USUARIO</button>
+            <button class = "btn btn-danger" onclick="location.href='views/admin/login.php'">ADMIN</button>
+            <button class = "btn btn-warning"onclick="location.href='views/users/index.php'">USUARIO</button>
         </div>
     </div>
 </body>

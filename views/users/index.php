@@ -30,14 +30,14 @@ include('../../class/class_nivel/class_nivel_dal.php');
             <h2>Ticket de Turno</h2>
             <div class="wrapper">
                 <div class="box">
-                    <input type="text" name="fname" id="fname" value="<?php echo isset($_POST["fname"]) ? $_POST["fname"] : ""; ?>" />
+                    <input class="whiteText" type="text" name="fname" id="fname" value="<?php echo isset($_POST["fname"]) ? $_POST["fname"] : ""; ?>" />
                     <label for="fname">Nombre completo de quien realizará el trámite:</label>
                     <?php if (!empty($error_fname)) { ?>
                         <span class="error"><?php echo $error_fname; ?></span>
                     <?php } ?>
                 </div>
                 <div class="box">
-                    <input type="text" name="lCurp" id="lCurp" value="<?php echo isset($_POST["lCurp"]) ? $_POST["lCurp"] : ""; ?>" />
+                    <input class="whiteText" type="text" name="lCurp" id="lCurp" value="<?php echo isset($_POST["lCurp"]) ? $_POST["lCurp"] : ""; ?>" />
                     <label for="lCurp">CURP:</label>
                     <?php if (!empty($error_lcurp)) { ?>
                         <span class="error"><?php echo $error_lcurp; ?></span>
@@ -141,7 +141,7 @@ include('../../class/class_nivel/class_nivel_dal.php');
                 </div>
 
                 <div class="box">
-                    <input type="date" id="fecha" name="fecha" value="<?php echo isset($_POST["fecha"]) ? $_POST["fecha"] : ""; ?>" min="2023-01-01" max="2023-12-31">
+                    <input class="whiteText" type="date" id="fecha" name="fecha" value="<?php echo isset($_POST["fecha"]) ? $_POST["fecha"] : ""; ?>" min="2023-01-01" max="2023-12-31">
                     <label for="fecha">Fecha de Cita:
                     </label>
                     <br>

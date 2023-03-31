@@ -1,5 +1,5 @@
 <?php
-include (__DIR__ . "../../class/class_alumno/class_alumno_dal.php");
+include(__DIR__ . "../../class/class_alumno/class_alumno_dal.php");
 $lcurp = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lcurp = test_input($_POST["lCurp"]);
@@ -9,6 +9,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tel = test_input($_POST["tel"]);
     $cel = test_input($_POST["cel"]);
     $mail = test_input($_POST["mail"]);
+
+    $fname = test_input($_POST["fname"]);
+    $mes = test_input($_POST["mes"]);
+    $mes1 = test_input($_POST["mes1"]);
+    $mes2 = test_input($_POST["mes2"]);
+    $fecha = test_input($_POST["fecha"]);
 
     if (empty($name)) {
         $error_name = "El Nombre es obligatorio";
@@ -57,8 +63,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $obj_ins = new catalogo_alumno(strtoupper($lcurp), strtoupper($name), strtoupper($firstName), strtoupper($lastName), $tel, $cel, strtoupper($mail));
         $result_ins = $obj_alumno->inserta_alumno($obj_ins);
         if ($result_ins == 1) {
-            header("Location: index.php");
-            exit();
+            $create_id = substr($lcurp, 0, 10) . str_replace("-", "", $fecha);
+
+            require_once('class_ticket\class_ticket_dal.php');
+            $obj_ticket = new catalogo_ticket_dal;
+                $result_exis = $obj_ticket->existe_ticket_municipio("$mes2");
+                $turno = $result_exis + 1;
+                $obj_ins = new catalogo_ticket(strtoupper($create_id), strtoupper($fname), strtoupper($lcurp),  $fecha, $mes1, $mes, $mes2, 'PENDIENTE', $turno);
+                $result_ins = $obj_ticket->inserta_ticket($obj_ins);
+                if ($result_ins == 1) {
+                    header("Location: confirmacion.php?exito=1&create_id=$create_id&lcurp=$lcurp");
+                    exit();
+                } else {
+                    echo "<h2 style = 'color:red'>NO SE INSERTO REGISTRO</h2>";
+                }
+            
         } else {
             echo "<h2 style = 'color:red'>NO SE INSERTO REGISTRO</h2>";
         }

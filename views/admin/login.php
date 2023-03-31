@@ -4,6 +4,7 @@
 <?php
 include(__DIR__ . '/../../class/class_db/class_db.php');
 include(__DIR__ . '/../../class/class_usuarios/class_usuario_dal.php');
+include(__DIR__ . '/../../includes/sweetalert.php');
 
 if (isset($_POST['submit'])) {
     $id = $_POST['username'];
@@ -25,10 +26,10 @@ if (isset($_POST['submit'])) {
             header("Location: ../admin/index.php");
             exit();
         } else {
-            echo "<script>alert('El usuario o la contraseña son incorrectos')</script>";
+            echo ('<script>alert("Usuario o Contraseña Incorrectos")</script>');
         }
     } else {
-        echo "<script>alert('Por favor, completa el captcha')</script>";
+        echo ('<script>alert("Por favor, Completa el CAPTCHA")</script>');
     }
 }
 ?>
@@ -43,7 +44,7 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-    <form method="POST">
+    <form id="forms" method="POST">
 
         <img src="../../src/images/SecEd.png" alt="" width="200">
 
@@ -58,5 +59,38 @@ if (isset($_POST['submit'])) {
     </form>
 
 </body>
+
+<script>
+    const formulario = document.getElementById("forms");
+    const btnSubmit = document.getElementById("btnSubmit");
+    let varia = "";
+    let variable;
+
+    formulario.addEventListener("submit", (e) => {
+        messages = []
+
+        let patUser = document.getElementById("username").value.trim();
+
+        if (patUser.length == 0) {
+            messages.push("FALTANTE: Nombre de Usuario");
+        }
+
+        let patPassword = document.getElementById("password").value.trim();
+        if (patPassword.length == 0) {
+            messages.push("FALTANTE: Contraseña");
+        }
+
+
+        if (messages.length > 0) {
+            Swal.fire({
+                icon: "info",
+                title: "Error en campos",
+                text: messages.join(" --- "),
+                footer: "Complete o verifique los campos mencionados",
+            });
+            e.preventDefault();
+        }
+    });
+</script>
 
 </html>
