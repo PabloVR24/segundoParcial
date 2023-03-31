@@ -563,7 +563,7 @@ app.put("/api/tickets/:id_ticket", (req, res) => {
     );
 });
 
-app.put("/api/ticketestatus/:id_ticket", (req, res) => {
+app.put("git ", (req, res) => {
     const id_ticket = req.params.id_ticket;
     const estatus = req.body.ESTATUS;
 

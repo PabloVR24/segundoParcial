@@ -1,6 +1,6 @@
 <?php
 include(__DIR__ . '/../../includes/navbar.php');
-$url = "http://localhost:3000/api/asuntos";
+$url = "http://localhost:4000/api/asuntos";
 $response = file_get_contents($url);
 $datos = json_decode($response, true);
 ?>
@@ -57,10 +57,10 @@ $datos = json_decode($response, true);
                     <tr>
                         <?php foreach ($datos as $asunto) { ?>
                             <td>
-                                <?php echo $asunto['ID_ASUNTO']; ?>
+                                <?php echo $asunto['id_asunto']; ?>
                             </td>
                             <td>
-                                <?php echo $asunto['NOMBRE_ASUNTO']; ?>
+                                <?php echo $asunto['nombre_asunto']; ?>
                             </td>
                     </tr>
                 <?php } ?>
@@ -75,12 +75,12 @@ $datos = json_decode($response, true);
             const nombre_asunto = document.getElementById("nombre");
 
             try {
-                const response = await fetch(`http://localhost:3000/api/asuntos/"${id_asunto}"`);
+                const response = await fetch(`http://localhost:4000/api/asuntos/1`);
                 if (response.ok) {
                     const data = await response.json();
                     if (data.length > 0) {
                         data.forEach((asunto) => {
-                            nombre_asunto.value = `${asunto.NOMBRE_ASUNTO}`;
+                            nombre_asunto.value = `${asunto.nombre_asunto}`;
                         });
                     } else {
                         throw new Error('Registro no encontrado');
